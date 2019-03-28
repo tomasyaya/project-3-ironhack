@@ -23,6 +23,11 @@ class GuideService {
       .then(({data}) => data)
   }
 
+  toggleToFavorites(id){
+    return this.api.put(`/favorites/${id}`)
+      .then(({data}) => data)
+  }
+
   createGuide(body) {
     return this.api.post('/guide', body)
       .then(({data}) => data)

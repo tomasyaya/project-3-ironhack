@@ -7,7 +7,8 @@ class Guide extends Component {
 
   state = {
     guide: {},
-    isLoaded: false
+    isLoaded: false,
+    isFavorite: false
   }
 
   componentDidMount(){
@@ -38,15 +39,31 @@ class Guide extends Component {
     ))
   }
 
+  handleClick = async () => {
+    const { id } = this.props.match.params;
+    const { isFavorite } = this.state
+    try {
+      await guideServices.toggleToFavorites(id);
+      this.setState({
+        isFavorite: !isFavorite
+      })
+    } catch(error){
+      console.log(error)
+    }
+  }
+
   render() {
     const { title, location } = this.state.guide;
-    const { isLoaded, guide } = this.state;
+    const { isLoaded, guide, isFavorite } = this.state;
     return (
       <div>
         <h1>Guide</h1>
         <h4>{title}</h4>
         <p>Address: {location}</p>
         {isLoaded && !emptyArray(guide.places) ? this.showPlaces(guide.places) : null}
+        <button onClick={this.handleClick}>
+          {isFavorite ? "Already a Fav!" : "Add Fav!"}
+        </button>
       </div>
     );
   }
