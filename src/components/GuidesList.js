@@ -6,6 +6,10 @@ import SearchInput from './SearchInput';
 class GuidesList extends Component {
 
 
+  state = {
+    show: false
+  }
+
   renderGuides = (arr) => {
     return arr.map((guide) => {
       return <GuideCard 
@@ -16,12 +20,21 @@ class GuidesList extends Component {
     })
   }
 
+  displayGuides = (state) => {
+    this.setState({
+      show: state
+    })
+  }
+
   render() {
-    const { guides } = this.props
+    const { guides } = this.props;
+    const { show } = this.state;
     return (
       <div>
-        <SearchInput />
-        {this.renderGuides(guides)}
+        <SearchInput
+          displayGuides={this.displayGuides}
+        />
+        {show ? this.renderGuides(guides) : null}
       </div>
     );
   }
