@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 
+
 class Signup extends Component {
 
   state = {
@@ -13,7 +14,7 @@ class Signup extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
-
+   
     this.props.signup({ username, password })
       .then(() => {
         this.setState({
