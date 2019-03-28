@@ -58,7 +58,6 @@ export const withState = (Comp) => {
   render() {
       const { children } = this.props;
       const { guides }= this.state;
-      console.log(this.props)
         return (
           <Provider value={{
             guides,

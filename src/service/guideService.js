@@ -28,6 +28,11 @@ class GuideService {
       .then(({data}) => data)
   }
 
+  getFavorites(){
+    return this.api.get('/favorites')
+      .then(({data}) => data)
+  }
+
   createGuide(body) {
     return this.api.post('/guide', body)
       .then(({data}) => data)
