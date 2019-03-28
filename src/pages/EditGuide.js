@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
 import guideService from '../service/guideService';
+import EditForm from '../components/EditForm';
 
 class EditGuide extends Component {
 
@@ -23,10 +24,11 @@ class EditGuide extends Component {
   }
 
   render() {
-    console.log(this.state.guide)
+    const { guide } = this.state;
     return (
       <div>
         <h2>Edit Guide</h2>
+        <EditForm guide={guide}/>
       </div>
     );
   }

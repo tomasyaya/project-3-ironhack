@@ -15,6 +15,23 @@
   border: 1px solid black;
 }
 
+/* --------- EDIT GUIDE --------- */
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  
+}
+
+.edit-form input {
+  margin: 10px 0;
+}
+
+.edit-form textarea {
+  margin: 10px 0;
+}
+
 
 /* ------- FO0TER ----------- */
 

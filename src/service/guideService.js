@@ -35,7 +35,7 @@ class GuideService {
   }
 
   editGuide(id, body) {
-    return this.api.put(`/${id}`, body)
+    return this.api.put(`/guide/${id}`, body)
     .then(({ data } )=> data)
   }
 
