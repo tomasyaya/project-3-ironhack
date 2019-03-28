@@ -4,7 +4,7 @@ import guideService from '../service/guideService';
 class DeleteButton extends Component {
 
   handleClick = async (id) => {
-    const { refreshGuides } = this.props
+    const { refreshGuides } = this.props;
     try{
       await guideService.deleteGuide(id)
       await refreshGuides()  

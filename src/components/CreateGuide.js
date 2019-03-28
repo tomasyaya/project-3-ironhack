@@ -21,13 +21,15 @@ class CreateGuide extends Component {
     this.getMyGuides()
   }
 
-  getMyGuides = () => {
-    guideService.myGuides()
-      .then(guides => {
-        this.setState({
-          guides: [...guides]
-        })
-      })
+  getMyGuides = async () => {
+    try {
+      const guides = await guideService.myGuides();
+      this.setState({
+        guides: [...guides]
+      });
+    } catch(error){
+      console.log(error)
+    } 
   }
 
   handleChange = (event) => {
@@ -37,21 +39,24 @@ class CreateGuide extends Component {
     console.log(this.state)
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const { title, location } = this.state;
     const guide = {
       title,
       location,
     }
-    guideService.createGuide(guide)
-      .then(()=>{
-        this.setState({
+    try {
+      await guideService.createGuide(guide)
+      this.setState({
         title: '',
         location: '',
         showButton: true,
       });
-    });
+      await this.getMyGuides()
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   showFrom = () => {
