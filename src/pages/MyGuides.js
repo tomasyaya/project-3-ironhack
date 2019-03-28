@@ -72,7 +72,7 @@ class MyGuides extends Component {
       return <div key={_id}>
         <GuideCard title={title} location={location} />
         <DeleteButton id={_id} refreshGuides={this.getMyGuides} />
-        <Link to={`/guide/${_id}`}>Improve!</Link>
+        <Link to={`/user/guide/${_id}`}>Improve!</Link>
       </div>
       
     })

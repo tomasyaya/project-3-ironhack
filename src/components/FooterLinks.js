@@ -5,8 +5,8 @@ class FooterLinks extends Component {
   render() {
     return (
       <div className="footer-links">
-        <Link to="/private">Private</Link>
-        <Link to="/user/guides">My Guides</Link>
+        <Link to="/favorites">Favorites</Link>
+        <Link to="/user/guides">Admin</Link>
         <Link to="/">Home</Link>
       </div>
     );

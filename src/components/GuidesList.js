@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withState } from '../providers/StateProvider';
 import GuideCard from './GuideCard';
 import SearchInput from './SearchInput';
+import { Link } from 'react-router-dom';
 
 class GuidesList extends Component {
 
@@ -12,11 +13,14 @@ class GuidesList extends Component {
 
   renderGuides = (arr) => {
     return arr.map((guide) => {
-      return <GuideCard 
-              key={guide._id}
-              title={guide.title}
-              location={guide.location}
-            />
+      return <div key={guide._id}>
+        <GuideCard 
+          title={guide.title}
+          location={guide.location}
+        />
+        <Link to={`/guide/${guide._id}`}>Check it!</Link>
+      </div>
+      
     })
   }
 
