@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import guideService from '../service/guideService';
 import { checkEqual } from '../helpers/conditionals';
-import { withAuth } from './AuthProvider'
+import { withAuth } from './AuthProvider';
 
 export const StateContext = React.createContext();
 

@@ -9,7 +9,6 @@ import { Switch } from 'react-router-dom';
 import EditGuide from './pages/EditGuide';
 import Navbar from './components/Navbar';
 import MyGuides from './pages/MyGuides';
-import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Guide from './pages/Guide';
@@ -32,7 +31,6 @@ class App extends Component {
             <PrivateRoute path="/user/guide/:id" component={EditGuide} />
             <PrivateRoute path="/guide/:id" component={Guide} />
             <PrivateRoute path="/favorites" component={Favorites} />
-            <PrivateRoute path="/private" component={Private} />
             <PrivateRoute path="/" component={Home} />
           </Switch>
           <FooterMenu />
