@@ -13,3 +13,11 @@ export const emptyArray = (input) => {
     return true;
   }
 }
+
+export const checkEqual = (one, two) => {
+  if(one.toString() === two.toString()) {
+    return true
+  } else {
+    return false
+  }
+}

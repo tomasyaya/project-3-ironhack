@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import guideService from '../service/guideService';
+import { checkEqual } from '../helpers/conditionals';
 import { withAuth } from './AuthProvider'
 
-export const StateContext = React.createContext(
-  // authStore // default value
-);
+export const StateContext = React.createContext();
 
 const { Provider, Consumer }  = StateContext;
 
@@ -35,10 +34,17 @@ export const withState = (Comp) => {
     this.getAllGuides()
   }
 
-  getAllGuides = () => {
-    guideService.getAll()
-    .then(result => this.setState({guides: [...result]}))
-    .catch(error => console.log(error))
+  getAllGuides = async () => {
+    const { _id: userId } = this.props.user; 
+    try {
+    const guides = await guideService.getAll()
+    const filterGuides = guides.filter(guide => !checkEqual(guide.creator, userId))
+    this.setState({
+      guides: [...filterGuides]
+    })
+    } catch(error){
+      console.log(error)
+    } 
   }
 
   searchGuide = (search) => {
@@ -50,8 +56,9 @@ export const withState = (Comp) => {
   }
 
   render() {
-      const { children } = this.props
-      const { guides }= this.state
+      const { children } = this.props;
+      const { guides }= this.state;
+      console.log(this.props)
         return (
           <Provider value={{
             guides,
