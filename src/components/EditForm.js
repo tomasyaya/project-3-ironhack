@@ -34,7 +34,6 @@ class EditForm extends Component {
 
   render() {
     const { name, location, what, description } = this.state;
-    console.log(this.props.guide._id)
     return (
       <div>
         <h4>Edit Form</h4>

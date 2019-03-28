@@ -5,3 +5,11 @@ export const checkIfEmpty = (input) => {
     return false;
   }
 }
+
+export const emptyArray = (input) => {
+  if(input.length > 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
