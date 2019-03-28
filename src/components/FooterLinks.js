@@ -6,7 +6,7 @@ class FooterLinks extends Component {
     return (
       <div className="footer-links">
         <Link to="/private">Private</Link>
-        <Link to="/create">New Guide</Link>
+        <Link to="/user/guides">My Guides</Link>
         <Link to="/">Home</Link>
       </div>
     );

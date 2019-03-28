@@ -4,11 +4,12 @@ import { withState } from '../providers/StateProvider';
 import { checkIfEmpty } from '../helpers/conditionals';
 import guideService from '../service/guideService';
 import GuideCard from '../components/GuideCard';
-import DeleteButton from './DeleteButton';
+import DeleteButton from '../components/DeleteButton';
+import { Link } from 'react-router-dom';
 
 
 
-class CreateGuide extends Component {
+class MyGuides extends Component {
 
   state = {
     title: '',
@@ -71,6 +72,7 @@ class CreateGuide extends Component {
       return <div key={_id}>
         <GuideCard title={title} location={location} />
         <DeleteButton id={_id} refreshGuides={this.getMyGuides} />
+        <Link to={`/guide/${_id}`}>Improve!</Link>
       </div>
       
     })
@@ -97,4 +99,4 @@ class CreateGuide extends Component {
   }
 }
 
-export default  withState(withAuth(CreateGuide));
+export default  withState(withAuth(MyGuides));
