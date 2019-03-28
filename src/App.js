@@ -10,6 +10,7 @@ import AuthProvider from './providers/AuthProvider';
 import StateProvider from './providers/StateProvider';
 import Home from './pages/Home';
 import FooterMenu from './components/FooterMenu';
+import CreateGuide from './components/CreateGuide';
 import './App.css';
 
 
@@ -23,6 +24,7 @@ class App extends Component {
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
+            <PrivateRoute path="/create" component={CreateGuide} />
             <PrivateRoute path="/private" component={Private} />
             <PrivateRoute path="/" component={Home} />
           </Switch>

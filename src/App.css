@@ -3,9 +3,31 @@
   margin: auto;
 }
 
-.footer-menu {
+/* ------ CREATE GUIDE ------ */
+
+.create-guide-form {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.create-guide-form input {
+  border: 1px solid black;
+}
+
+
+/* ------- FO0TER ----------- */
+
+
+.footer-menu {
   position: fixed;
   top: 630px;
+  width: 85%;
 }
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+}
+

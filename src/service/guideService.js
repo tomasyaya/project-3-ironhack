@@ -14,7 +14,7 @@ class GuideService {
   }
 
   createGuide(body) {
-    return this.api.post('/', body)
+    return this.api.post('/guide', body)
       .then(({data}) => data)
   }
 
