@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withState } from '../providers/StateProvider';
 import GuideCard from './GuideCard';
+import SearchInput from './SearchInput';
 
 class GuidesList extends Component {
 
@@ -19,6 +20,7 @@ class GuidesList extends Component {
     const { guides } = this.props
     return (
       <div>
+        <SearchInput />
         {this.renderGuides(guides)}
       </div>
     );

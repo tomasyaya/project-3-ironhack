@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import AuthProvider from './providers/AuthProvider';
 import StateProvider from './providers/StateProvider';
 import Home from './pages/Home';
+import FooterMenu from './components/FooterMenu';
 import './App.css';
 
 
@@ -25,6 +26,7 @@ class App extends Component {
             <PrivateRoute path="/private" component={Private} />
             <PrivateRoute path="/" component={Home} />
           </Switch>
+          <FooterMenu />
         </div>
         </StateProvider>
       </AuthProvider>

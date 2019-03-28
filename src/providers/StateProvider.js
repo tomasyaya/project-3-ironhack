@@ -16,6 +16,8 @@ export const withState = (Comp) => {
           {(stateStore) => {
             return <Comp 
               guides={stateStore.guides}
+              searchGuide={stateStore.searchGuide}
+              getAllGuides={stateStore.getAllGuides}
               {...this.props} />
           }}
         </Consumer>
@@ -30,19 +32,31 @@ export const withState = (Comp) => {
   }
 
   componentDidMount(){
+    this.getAllGuides()
+  }
+
+  getAllGuides = () => {
     guideService.getAll()
     .then(result => this.setState({guides: [...result]}))
     .catch(error => console.log(error))
   }
 
-  
+  searchGuide = (search) => {
+    const { guides } = this.state
+    this.setState({
+      guides: [...guides].filter(guide => guide.location.toLowerCase().includes(search.toLowerCase()))
+    })
+    console.log(guides)
+  }
 
   render() {
       const { children } = this.props
       const { guides }= this.state
         return (
           <Provider value={{
-            guides,  
+            guides,
+            searchGuide: this.searchGuide,
+            getAllGuides: this.getAllGuides  
             }}>
             {children}
           </Provider>    
