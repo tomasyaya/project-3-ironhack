@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
 import { withState } from '../providers/StateProvider';
+import { checkIfEmpty } from '../helpers/conditionals';
 import guideService from '../service/guideService';
 import GuideCard from '../components/GuideCard';
-import { checkIfEmpty } from '../helpers/conditionals';
+import DeleteButton from './DeleteButton';
+
 
 
 class CreateGuide extends Component {
@@ -19,7 +21,7 @@ class CreateGuide extends Component {
     this.getMyGuides()
   }
 
-  getMyGuides(){
+  getMyGuides = () => {
     guideService.myGuides()
       .then(guides => {
         this.setState({
@@ -61,7 +63,11 @@ class CreateGuide extends Component {
   printGuides = (arr) => {
     return arr.map(guide => {
       const { title, location, _id } = guide;
-      return <GuideCard  key={_id} title={title} location={location} />
+      return <div key={_id}>
+        <GuideCard title={title} location={location} />
+        <DeleteButton id={_id} refreshGuides={this.getMyGuides} />
+      </div>
+      
     })
   }
 
