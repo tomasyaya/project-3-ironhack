@@ -2,3 +2,10 @@
   width: 90%;
   margin: auto;
 }
+
+.footer-menu {
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+  top: 630px;
+}

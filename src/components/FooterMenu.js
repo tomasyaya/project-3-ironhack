@@ -7,7 +7,7 @@ class FooterMenu extends Component {
   render() {
     const { isLogged } = this.props
     return (
-      <div>
+      <div className="footer-menu">
         {isLogged ? <FooterLinks /> : null}
       </div>
     );
