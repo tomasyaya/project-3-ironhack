@@ -13,6 +13,11 @@ class GuideService {
       .then(({data}) => data)
   }
 
+  myGuides(){
+    return this.api.get('/guides/user')
+      .then(({data}) => data)
+  }
+
   createGuide(body) {
     return this.api.post('/guide', body)
       .then(({data}) => data)
