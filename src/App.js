@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import AuthProvider from './providers/AuthProvider';
 import StateProvider from './providers/StateProvider';
 import Home from './pages/Home';
+import './App.css';
 
 
 class App extends Component {

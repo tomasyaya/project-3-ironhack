@@ -15,7 +15,7 @@ export const withState = (Comp) => {
         <Consumer>
           {(stateStore) => {
             return <Comp 
-              
+              guides={stateStore.guides}
               {...this.props} />
           }}
         </Consumer>
@@ -31,7 +31,7 @@ export const withState = (Comp) => {
 
   componentDidMount(){
     guideService.getAll()
-    .then(result => console.log(result))
+    .then(result => this.setState({guides: [...result]}))
     .catch(error => console.log(error))
   }
 
@@ -39,9 +39,10 @@ export const withState = (Comp) => {
 
   render() {
       const { children } = this.props
+      const { guides }= this.state
         return (
-          <Provider value={
-            { 
+          <Provider value={{
+            guides,  
             }}>
             {children}
           </Provider>    
