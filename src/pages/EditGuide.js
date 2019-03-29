@@ -9,7 +9,9 @@ class EditGuide extends Component {
 
   state = {
     guide: {},
-    isLoaded: false
+    places: [],
+    isLoaded: false,
+    update: false
   }
 
   componentDidMount(){
@@ -22,11 +24,19 @@ class EditGuide extends Component {
       const guide = await guideService.getGuide(id);
       this.setState({
         guide,
+        places: [...guide.places],
         isLoaded: true
       })
     } catch(error){
       console.log(error)
     }
+  }
+
+  update = () => {
+    const { update } = this.state
+    this.setState({
+      update: !update
+    })
   }
 
   showGuidePlaces = (places, id) => {
@@ -37,19 +47,19 @@ class EditGuide extends Component {
         <p>{place.what}</p>
         <p>{place.location}</p>
         <p>{place.description}</p>
-        <RemovePlace id={id} place={place._id}/>
+        <RemovePlace getGuide={this.getGuide} id={id} place={place._id}/>
       </div>
     ))
   }
 
   render() {
-    const { guide, isLoaded } = this.state;
-    console.log(this.state)
+    const { guide, isLoaded, places } = this.state;
+    console.log(this.state.places)
     return (
       <div className="edit-main-div">
         <h2>Add Places</h2>
-        {!checkIfEmpty(guide) ? <EditForm guide={guide}/> : null}
-        {isLoaded && !emptyArray(guide.places) ? this.showGuidePlaces(guide.places, guide._id)  : "Loading ..."}
+        {!checkIfEmpty(guide) ? <EditForm getGuide={this.getGuide}guide={guide}/> : null}
+        {isLoaded && !emptyArray(guide.places) ? this.showGuidePlaces(places, guide._id)  : "Loading ..."}
       </div>
     );
   }

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import guideService from '../service/guideService';
-import { nextTick } from 'q';
+
 
 class RemovePlace extends Component {
 
 
   handleClick = async (guide, place) => {
+    const { getGuide } = this.props;
     try {
-      const places = await guideService.removePlace(guide, place);
-      console.log(places)
+      await guideService.removePlace(guide, place);
+      getGuide()
     } catch(error) {
       console.log(error)
     }
@@ -18,7 +19,7 @@ class RemovePlace extends Component {
     const { id, place } = this.props;
     return (
       <div>
-        <p  onClick={() => {this.handleClick(id, place)}}>
+        <p id="remove-place" onClick={() => {this.handleClick(id, place)}}>
           remove
         </p>
       </div>

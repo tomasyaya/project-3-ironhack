@@ -56,7 +56,7 @@ class Guide extends Component {
     const { title, location } = this.state.guide;
     const { isLoaded, guide, isFavorite } = this.state;
     return (
-      <div>
+      <div className="guide-detail-main">
         <h1>Guide</h1>
         <h4>{title}</h4>
         <p>Address: {location}</p>

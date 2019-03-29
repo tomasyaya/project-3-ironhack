@@ -18,9 +18,11 @@ class EditForm extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault()
-    const { _id } = this.props.guide
+    const { _id } = this.props.guide;
+    const { getGuide } = this.props;
     try {
-      await guideService.editGuide(_id, this.state)
+      await guideService.editGuide(_id, this.state);
+      getGuide();
       this.setState({
         name: '',
         location: '',
