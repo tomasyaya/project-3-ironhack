@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
+import { withRouter } from 'react-router-dom';
 
 class Navbar extends Component {
+  
   render() {
-    const { isLogged, user, logout } = this.props;
+    const { isLogged, user, logout, history } = this.props;
     const { username } = user;
     if (isLogged) {
       return <div>
+        <p onClick={history.goBack}>Back</p>
         <p>username: { username }</p>
         <p onClick={logout}>Logout</p>
       </div>
@@ -21,4 +24,4 @@ class Navbar extends Component {
   }
 }
 
-export default withAuth(Navbar);
+export default withRouter(withAuth(Navbar));
