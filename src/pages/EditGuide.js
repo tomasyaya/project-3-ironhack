@@ -30,10 +30,10 @@ class EditGuide extends Component {
 
   showGuidePlaces = (places) => {
     return places.map(place => (
-      <div key={place._id}>
+      <div key={place._id} className="places-div">
         <h4>{place.name}</h4>
-        <p>type: {place.what}</p>
-        <p>address: {place.location}</p>
+        <p>{place.what}</p>
+        <p>{place.location}</p>
         <p>{place.description}</p>
       </div>
     ))
@@ -41,9 +41,10 @@ class EditGuide extends Component {
 
   render() {
     const { guide, isLoaded } = this.state;
+    console.log(this.state)
     return (
-      <div>
-        <h2>Edit Guide</h2>
+      <div className="edit-main-div">
+        <h2>Add Places</h2>
         {!checkIfEmpty(guide) ? <EditForm guide={guide}/> : null}
         {isLoaded && !emptyArray(guide.places) ? this.showGuidePlaces(guide.places)  : "Loading ..."}
       </div>
