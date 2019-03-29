@@ -15,11 +15,11 @@ class DeleteButton extends Component {
 
 
   render() {
-    const { id } = this.props;
+    const { _id } = this.props;
     
     return (
-      <div>
-        <button onClick={() => {this.handleClick(id)}}>
+      <div className="delete-btn">
+        <button onClick={() => {this.handleClick(_id)}}>
           X
         </button>
       </div>

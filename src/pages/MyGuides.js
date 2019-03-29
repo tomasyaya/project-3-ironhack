@@ -6,7 +6,7 @@ import guideService from '../service/guideService';
 import GuideCard from '../components/GuideCard';
 import DeleteButton from '../components/DeleteButton';
 import { Link } from 'react-router-dom';
-
+import OwnGuide from '../components/OwnGuide';
 
 
 class MyGuides extends Component {
@@ -69,9 +69,9 @@ class MyGuides extends Component {
   printGuides = (arr) => {
     return arr.map(guide => {
       const { title, location, _id } = guide;
-      return <div key={_id}>
-        <GuideCard title={title} location={location} />
-        <DeleteButton id={_id} refreshGuides={this.getMyGuides} />
+      return <div key={_id} className="own-guides-div">
+        <OwnGuide title={title} location={location} />
+        <DeleteButton _id={_id} refreshGuides={this.getMyGuides} />
         <Link to={`/user/guide/${_id}`}>Improve!</Link>
       </div>
       
@@ -90,7 +90,7 @@ class MyGuides extends Component {
                           <button type="submit">Create</button>
                         </form>
     return ( 
-      <div>
+      <div className="my-guides-main">
           <h2>My Guides</h2>
           {showButton ? button : createForm}
           {!checkIfEmpty(guides) ? this.printGuides(guides) : null}

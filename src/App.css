@@ -292,6 +292,90 @@ body {
 
 }
 
+/* -------- OWN GUIDES ------- */
+
+.my-guides-main {
+  width: 100%;
+  height: 100vh;
+  background: #303030;
+  text-align: center;
+}
+
+.my-guides-main h2 {
+  color: #dfdfe5;
+  opacity: 0.9;
+  padding-top: 20px;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.my-guides-main button {
+  color: #FF8C00;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+.my-guides-main input {
+  background: #424242;
+  border: none;
+  opacity: 0.8;
+  outline: none;
+  width: 50%;
+  height: 20px;
+  margin: 10px auto;
+  color: #dfdfe5;
+  padding-left: 10px;
+}
+
+.my-guides-main label {
+  color: #dfdfe5;
+  opacity: 0.8;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8em;
+
+}
+
+.own-guides-div {
+  background: #424242;
+  margin: 10px auto;
+  width: 70%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.delete-btn button {
+  color: #dfdfe5;
+  margin-bottom: 30px;
+  position: fixed;
+  left: 295px;
+  font-size: 0.5em;
+  opacity: 0.6;
+}
+
+.own-guides-div a {
+  text-decoration: none;
+  text-transform: lowercase;
+  color: #FF8C00;
+  opacity: 0.9;
+  font-size: 0.8em;
+}
+
+.own-guides-div h4 {
+  color: #dfdfe5;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.own-guides-div p {
+  color: #dfdfe5;
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+
+
 /* ------ CREATE GUIDE ------ */
 
 .create-guide-form {
