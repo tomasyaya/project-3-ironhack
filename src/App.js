@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { faIgloo, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faIgloo, faArrowLeft, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import StateProvider from './providers/StateProvider';
 import PrivateRoute from './components/PrivateRoute';
@@ -21,7 +21,7 @@ import './App.css';
 
 
 
-library.add(faIgloo, faArrowLeft)
+library.add(faIgloo, faArrowLeft, faSignOutAlt)
 
 
 

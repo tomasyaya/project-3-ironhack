@@ -10,12 +10,14 @@ class Navbar extends Component {
     const { isLogged, user, logout, history } = this.props;
     const { username } = user;
     if (isLogged) {
-      return <div>
+      return <div className="navbar">
         <p onClick={history.goBack}>
           <FontAwesomeIcon icon="arrow-left" />
         </p>
-        <p>{ username }</p>
-        <p onClick={logout}>Logout</p>
+        <p id="username">{ username }</p>
+        <p onClick={logout}>
+          <FontAwesomeIcon icon="sign-out-alt" />
+        </p>
       </div>
     } else {
       return <div>
