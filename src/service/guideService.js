@@ -3,49 +3,49 @@ import axios from 'axios';
 class GuideService {
   constructor() {
     this.api = axios.create({
-      baseURL: 'http://localhost:5000/api/',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       withCredentials: true
     });
   }
 
   getAll() {
-    return this.api.get('/guides')
+    return this.api.get('/api/guides')
       .then(({data}) => data)
   }
 
   myGuides(){
-    return this.api.get('/guides/user')
+    return this.api.get('/api/guides/user')
       .then(({data}) => data)
   }
 
   getGuide(id){
-    return this.api.get(`/guide/${id}`)
+    return this.api.get(`/api/guide/${id}`)
       .then(({data}) => data)
   }
 
   toggleToFavorites(id){
-    return this.api.put(`/favorites/${id}`)
+    return this.api.put(`/api/favorites/${id}`)
       .then(({data}) => data)
   }
 
   getFavorites(){
-    return this.api.get('/favorites')
+    return this.api.get('/api/favorites')
       .then(({data}) => data)
   }
 
   createGuide(body) {
-    return this.api.post('/guide', body)
+    return this.api.post('/api/guide', body)
       .then(({data}) => data)
   }
 
 
   deleteGuide(id) {
-    return this.api.delete(`/${id}`)
+    return this.api.delete(`/api/${id}`)
       .then(({data}) => data)
   }
 
   editGuide(id, body) {
-    return this.api.put(`/guide/${id}`, body)
+    return this.api.put(`/api/guide/${id}`, body)
     .then(({ data } )=> data)
   }
 
