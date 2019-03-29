@@ -220,7 +220,7 @@ body {
 /* -------- HOME ------------ */
 
 .home-main-div {
-  background: #212112;
+  background: #303030;
   width: 100%;
   height: 100vh;
 }
@@ -240,7 +240,7 @@ body {
 }
 
 .home-inner-div input {
-  background: #303030;
+  background: #424242;
   border: none;
   margin-top: 20px;
   height: 30px;
@@ -527,6 +527,25 @@ body {
   color: #FF8C00;
   opacity: 0.9;
   margin-top: 10px;
+}
+
+/* ------ FAVORITE ------ */
+
+.favorite-main-div {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  background: #303030;
+
+}
+
+.favorite-main-div h2 {
+  color: #dfdfe5;
+  opacity: 0.8;
+  font-size: 2em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-top: 20px;
 }
 
 /* ------- FO0TER ----------- */

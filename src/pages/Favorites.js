@@ -35,7 +35,6 @@ class Favorites extends Component {
           title={guide.title}
           location={guide.location}
         />
-        <Link to={`/guide/${guide._id}`}>See More!</Link>
       </div>
     ))
   }
@@ -43,7 +42,7 @@ class Favorites extends Component {
     const { favorites, isLoaded } = this.state;
     console.log(favorites)
     return (
-      <div>
+      <div className="favorite-main-div">
         <h2>Favorites</h2>
         {isLoaded && !emptyArray(favorites) ? this.displayFavorites() : null}
       </div>
