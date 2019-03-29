@@ -3,6 +3,7 @@ import { withAuth } from '../providers/AuthProvider';
 import guideService from '../service/guideService';
 import EditForm from '../components/EditForm';
 import { checkIfEmpty, emptyArray } from '../helpers/conditionals';
+import RemovePlace from '../components/RemovePlace'
 
 class EditGuide extends Component {
 
@@ -28,13 +29,15 @@ class EditGuide extends Component {
     }
   }
 
-  showGuidePlaces = (places) => {
+  showGuidePlaces = (places, id) => {
+    console.log(places[0]._id)
     return places.map(place => (
       <div key={place._id} className="places-div">
         <h4>{place.name}</h4>
         <p>{place.what}</p>
         <p>{place.location}</p>
         <p>{place.description}</p>
+        <RemovePlace id={id} place={place._id}/>
       </div>
     ))
   }
@@ -46,7 +49,7 @@ class EditGuide extends Component {
       <div className="edit-main-div">
         <h2>Add Places</h2>
         {!checkIfEmpty(guide) ? <EditForm guide={guide}/> : null}
-        {isLoaded && !emptyArray(guide.places) ? this.showGuidePlaces(guide.places)  : "Loading ..."}
+        {isLoaded && !emptyArray(guide.places) ? this.showGuidePlaces(guide.places, guide._id)  : "Loading ..."}
       </div>
     );
   }

@@ -38,6 +38,10 @@ class GuideService {
       .then(({data}) => data)
   }
 
+  removePlace(guide, place){
+    return this.api.put(`/api/places/${guide}/${place}`)
+      .then(({data}) => data)
+  }
 
   deleteGuide(id) {
     return this.api.delete(`/api/${id}`)
