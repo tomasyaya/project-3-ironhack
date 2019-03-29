@@ -6,9 +6,11 @@ import { withAuth } from '../providers/AuthProvider';
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h1>Home</h1>
-        <GuideList />
+      <div className="home-main-div">
+        <div className="home-inner-div">
+          <h1>Where to?</h1>
+          <GuideList />
+        </div>
       </div>
     );
   }

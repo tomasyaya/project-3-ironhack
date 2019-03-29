@@ -3,7 +3,6 @@ import { withState } from '../providers/StateProvider';
 import { withAuth } from '../providers/AuthProvider';
 import GuideCard from './GuideCard';
 import SearchInput from './SearchInput';
-import { Link } from 'react-router-dom';
 
 class GuidesList extends Component {
 
@@ -18,8 +17,8 @@ class GuidesList extends Component {
         <GuideCard 
           title={guide.title}
           location={guide.location}
+          id={guide._id}
         />
-        <Link to={`/guide/${guide._id}`}>Check it!</Link>
       </div>
       
     })

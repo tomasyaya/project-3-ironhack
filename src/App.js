@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { faIgloo, faArrowLeft, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faIgloo, faArrowLeft, faSignOutAlt, faSquare, faFolderPlus, faStopCircle, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import StateProvider from './providers/StateProvider';
 import PrivateRoute from './components/PrivateRoute';
@@ -21,12 +21,14 @@ import './App.css';
 
 
 
-library.add(faIgloo, faArrowLeft, faSignOutAlt)
+library.add(faIgloo, faArrowLeft, faSignOutAlt, faSquare, faFolderPlus, faStopCircle, faHeart)
 
 
 
 class App extends Component {
+  
   render() {
+    console.log(this.props)
     return (
       <AuthProvider>
         <StateProvider>
@@ -42,6 +44,7 @@ class App extends Component {
             <PrivateRoute path="/favorites" component={Favorites} />
             <PrivateRoute path="/" component={Home} />
           </Switch>
+
           <FooterMenu />
         </div>
         </StateProvider>

@@ -1,6 +1,7 @@
 
 h1, h2, h3, h4{
   font-family: 'Oswald', sans-serif;
+  margin: 0;
 }
 
 html {
@@ -17,6 +18,7 @@ p, a {
   text-decoration: none;
 }
 
+
 p {
   margin: 0;
 }
@@ -24,11 +26,6 @@ p {
 body {
   margin: 0;
 }
-
-/* .app-container {
-  width: 90%;
-  margin: auto;
-} */
 
 /* ----------- SPLASH SCREEN ------ */
 
@@ -43,6 +40,7 @@ body {
 .splash-screen-main h1 {
   font-size: 3em;
   letter-spacing: 1px;
+  margin: 20px;
 }
 
 .splash-screen-inner {
@@ -70,6 +68,7 @@ body {
   height: 40px;
   text-transform: uppercase;
   font-size: 1.1em;
+  margin-bottom: 10px;
 }
 
 .splash-screen-main a {
@@ -218,6 +217,81 @@ body {
   margin: 5px 60px;
 }
 
+/* -------- HOME ------------ */
+
+.home-main-div {
+  background: #212112;
+  width: 100%;
+  height: 100vh;
+}
+
+.home-inner-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+.home-inner-div h1 {
+  font-size: 2em;
+  color: #dfdfe5;
+  opacity: 0.9;
+  padding-top: 40px;
+}
+
+.home-inner-div input {
+  background: #303030;
+  border: none;
+  margin-top: 20px;
+  height: 30px;
+  width: 60%;
+  outline: none;
+  color: #dfdfe5;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.home-inner-div input::placeholder {
+  padding-left: 10px;
+}
+
+#kill-button {
+  color: #dfdfe5;
+  opacity: 0.7;
+  margin: 0;
+  position: fixed;
+  top: 165px;
+}
+
+.guide-card {
+  background: #424242;
+  width: 70%;
+  margin: 10px auto;
+  padding: 5px;
+}
+
+.guide-card h4 {
+  font-size: 0.8em;
+  color: #dfdfe5;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.guide-card p {
+  font-size: 0.7em;
+  color: #dfdfe5;
+  opacity: 0.7;
+  margin: 3px auto;
+}
+
+.guide-card a {
+  text-decoration: none;
+  text-transform: lowercase;
+  color: #FF8C00;
+  font-size: 0.7em;
+
+}
+
 /* ------ CREATE GUIDE ------ */
 
 .create-guide-form {
@@ -254,12 +328,33 @@ body {
 .footer-menu {
   position: fixed;
   top: 630px;
-  width: 85%;
+  width: 100%;
+  background: rgba(0, 0, 0, 1);
+  margin: 0;
+  height: 50px;
 }
 
 .footer-links {
   display: flex;
   justify-content: space-between;
   text-decoration: none;
+}
+
+
+#heart {
+  color: #dfdfe5;
+  padding-top: 10px;
+  padding-left: 30px;
+}
+
+#favorite {
+  color: #dfdfe5;
+  padding-top: 10px;
+  padding-right: 30px;
+}
+
+#home {
+  color: #dfdfe5;
+  padding-top: 10px;
 }
 
