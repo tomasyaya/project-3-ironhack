@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withAuth } from '../providers/AuthProvider';
 import { withRouter } from 'react-router-dom';
 
@@ -10,14 +11,16 @@ class Navbar extends Component {
     const { username } = user;
     if (isLogged) {
       return <div>
-        <p onClick={history.goBack}>Back</p>
-        <p>username: { username }</p>
+        <p onClick={history.goBack}>
+          <FontAwesomeIcon icon="arrow-left" />
+        </p>
+        <p>{ username }</p>
         <p onClick={logout}>Logout</p>
       </div>
     } else {
       return <div>
-        <Link to='/login'>Login</Link>
-        <Link to='/signup'>Signup</Link>
+        {/* <Link to='/login'>Login</Link>
+        <Link to='/signup'>Signup</Link> */}
       </div>
     }
   

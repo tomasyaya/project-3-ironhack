@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { faIgloo, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import StateProvider from './providers/StateProvider';
 import PrivateRoute from './components/PrivateRoute';
 import AuthProvider from './providers/AuthProvider';
@@ -10,10 +12,16 @@ import EditGuide from './pages/EditGuide';
 import Navbar from './components/Navbar';
 import MyGuides from './pages/MyGuides';
 import Signup from './pages/Signup';
+import Splash from './pages/Splash';
 import Login from './pages/Login';
 import Guide from './pages/Guide';
 import Home from './pages/Home';
 import './App.css';
+
+
+
+
+library.add(faIgloo, faArrowLeft)
 
 
 
@@ -22,9 +30,10 @@ class App extends Component {
     return (
       <AuthProvider>
         <StateProvider>
-        <div className="container">
+        <div className="app-container">
           <Navbar />
           <Switch>
+            <AnonRoute path="/splash" component={Splash} />
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/user/guides" component={MyGuides} />

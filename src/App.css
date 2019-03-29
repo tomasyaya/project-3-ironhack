@@ -1,6 +1,66 @@
-.container {
+
+h1, h2, h3, h4{
+  font-family: 'Oswald', sans-serif;
+}
+
+p, a {
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+}
+
+/* .app-container {
   width: 90%;
   margin: auto;
+} */
+
+/* ----------- SPLASH SCREEN ------ */
+
+.splash-screen-main {
+  background: rgba(33, 33, 33, 1);
+  height: 100vh;
+  color: #dfdfe5;
+}
+
+.splash-screen-main h1 {
+  font-size: 3em;
+  letter-spacing: 1px;
+}
+
+.splash-screen-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.splash-screen-inner p {
+  font-size: 0.8em;
+  padding-top: 10px;
+}
+
+.login-button {
+  background: linear-gradient(  #f69d3c, #FF8C00);
+  border: none;
+  border-radius: 10px;
+  width: 170px;
+  height: 40px;
+  text-transform: uppercase;
+  font-size: 1.1em;
+}
+
+.splash-screen-main a {
+  color: #dfdfe5;
+}
+
+#signup {
+  color: #FF8C00;
+  
 }
 
 /* ------ CREATE GUIDE ------ */

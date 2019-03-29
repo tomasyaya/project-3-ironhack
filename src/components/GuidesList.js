@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withState } from '../providers/StateProvider';
+import { withAuth } from '../providers/AuthProvider';
 import GuideCard from './GuideCard';
 import SearchInput from './SearchInput';
 import { Link } from 'react-router-dom';
@@ -44,4 +45,4 @@ class GuidesList extends Component {
   }
 }
 
-export default withState(GuidesList);
+export default withAuth(withState(GuidesList));
