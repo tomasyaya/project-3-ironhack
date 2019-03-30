@@ -56,6 +56,16 @@ class Guide extends Component {
     }
   }
 
+  displayComments = () => {
+    const { comments } = this.state;
+    return comments.map(comment => (
+      <div className="comment-card">
+        <h4>{comment.name}</h4>
+        <p>{comment.comment}</p>
+      </div>
+    ))
+  }
+
   render() {
     const { title, location } = this.state.guide;
     const { isLoaded, guide, isFavorite, comments } = this.state;
@@ -72,6 +82,9 @@ class Guide extends Component {
         <h4>Places</h4>
         <div className="places-wrap-div">
           {isLoaded && !emptyArray(guide.places) ? this.showPlaces(guide.places) : null}
+        </div>
+        <div className="show-comments-div">
+          {isLoaded && !emptyArray(comments) ? this.displayComments() : null}
         </div>
         <CommentForm  id={id}/>
       </div>
