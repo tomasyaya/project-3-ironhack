@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 class GuideCard extends Component {
   render() {
     const {location, title, id} = this.props
+    console.log(id)
     return (
       <div className="guide-card">
         <h4>{title}</h4>

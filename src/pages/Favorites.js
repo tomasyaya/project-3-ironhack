@@ -34,6 +34,7 @@ class Favorites extends Component {
         <GuideCard 
           title={guide.title}
           location={guide.location}
+          id={guide._id}
         />
       </div>
     ))

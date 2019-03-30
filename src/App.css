@@ -92,7 +92,7 @@ body {
   justify-content: center;
   color: #dfdfe5;
   text-align: center;
-  padding-top: 30px;
+  padding-top: 10px;
 }
 
 .signup-main-container h2 {
@@ -106,7 +106,9 @@ body {
   color: #dfdfe5;
   margin: 10px auto;
   width: 100%;
-  height: 20px;
+  height: 30px;
+  outline: none;
+  padding-left: 10px;
 }
 
 .signup-main-container input::placeholder {
@@ -119,6 +121,7 @@ body {
 
 .signup-inner-container p {
   font-size: 0.8em;
+  padding-top: 10px;
 }
 
 .signup-inner-container form {
@@ -182,7 +185,13 @@ body {
   color: #dfdfe5;
   margin: 10px auto;
   width: 50%;
-  height: 20px;
+  height: 30px;
+  outline: none;
+  padding-left: 10px;
+}
+
+.login-main button {
+  margin-bottom: 15px;
 }
 
 .login-main input::placeholder {
@@ -192,6 +201,7 @@ body {
 .login-main p {
   font-size: 0.8em;
   color: #dfdfe5;
+  padding-top: 10px;
 }
 
 
@@ -237,6 +247,7 @@ body {
   color: #dfdfe5;
   opacity: 0.9;
   padding-top: 40px;
+  text-transform: uppercase;
 }
 
 .home-inner-div input {
@@ -249,6 +260,7 @@ body {
   color: #dfdfe5;
   opacity: 0.8;
   margin-bottom: 10px;
+  padding-left: 10px;
 }
 
 .home-inner-div input::placeholder {
@@ -307,6 +319,7 @@ body {
   padding-top: 20px;
   font-size: 2em;
   margin-bottom: 15px;
+  text-transform: uppercase;
 }
 
 .my-guides-main button {
@@ -321,7 +334,7 @@ body {
   opacity: 0.8;
   outline: none;
   width: 50%;
-  height: 20px;
+  height: 30px;
   margin: 10px auto;
   color: #dfdfe5;
   padding-left: 10px;
@@ -392,19 +405,11 @@ body {
 
 .edit-main-div {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   text-align: center;
   background: #303030;
 }
 
-.edit-main-div input{
-  background: #424242;
-  border: none;
-  width: 60%;
-  outline: none;
-  color: #dfdfe5;
-  opacity: 0.8;
-}
 
 .edit-main-div input::placeholder {
   padding-left: 10px;
@@ -417,7 +422,7 @@ body {
 .edit-main-div textarea {
   background: #424242;
   border: none;
-  width: 60%;
+  width: 70%;
   outline: none;
   color: #dfdfe5;
   opacity: 0.8;
@@ -425,7 +430,7 @@ body {
 
 .edit-main-div form {
   text-align: center;
-  padding-left: 100px;
+  padding-left: 75px;
 }
 
 .edit-form {
@@ -440,14 +445,25 @@ body {
   opacity: 0.9;
   padding-top: 15px;
   padding-block-end: 10px;
+  text-transform: uppercase;
 }
 
 .edit-form input {
   margin: 10px 0;
+  height: 30px;
+  padding-left: 10px;
+  background: #424242;
+  border: none;
+  width: 70%;
+  outline: none;
+  color: #dfdfe5;
+  opacity: 0.8;
 }
 
 .edit-form textarea {
   margin: 10px 0;
+  padding-left: 10px;
+  padding-top: 5px;
 }
 
 #edit {
@@ -460,7 +476,7 @@ body {
   text-transform: uppercase;
   margin-bottom: 10px;
   margin-top: 5px;
-  padding-left: 70px;
+  padding-left: 95px;
   outline: none;
 }
 
@@ -506,6 +522,7 @@ body {
   opacity: 0.8;
   font-size: 2em;
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .guide-detail-main h4 {

@@ -28,7 +28,7 @@ library.add(faIgloo, faArrowLeft, faSignOutAlt, faSquare, faFolderPlus, faStopCi
 class App extends Component {
   
   render() {
-    console.log(this.props)
+
     return (
       <AuthProvider>
         <StateProvider>
