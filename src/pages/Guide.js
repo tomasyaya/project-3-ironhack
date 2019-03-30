@@ -57,12 +57,17 @@ class Guide extends Component {
     }
   }
 
+  updateComments = () => {
+    const { comments } = this.state;
+    this.setState({
+      comments: [...comments]
+    })
+  }
+
   displayComments = () => {
     const { comments, guide } = this.state;
     return comments.map(comment => (
       <div key={comment._id} className="comment-card">
-        <h4>{comment.name}</h4>
-        <p>{comment.comment}</p>
         <CommentCard 
           guide={guide}
           commentId={comment._id}
@@ -73,6 +78,8 @@ class Guide extends Component {
       </div>
     ))
   }
+
+  
 
   render() {
     const { title, location } = this.state.guide;
@@ -94,7 +101,10 @@ class Guide extends Component {
         <div className="show-comments-div">
           {isLoaded && !emptyArray(comments) ? this.displayComments() : null}
         </div>
-        <CommentForm  id={id}/>
+        <CommentForm 
+         id={id}
+         getGuide={this.getGuide}
+         />
       </div>
     );
   }

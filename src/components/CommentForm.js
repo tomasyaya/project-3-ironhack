@@ -16,13 +16,14 @@ class CommentForm extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const { id } = this.props;
+    const { id, getGuide } = this.props;
     const { message } = this.state;
     const comment = {
       message
     }
     try {
       await guideService.addComment(id, comment)
+      getGuide()
     } catch(error) {
       console.log(error)
     }
