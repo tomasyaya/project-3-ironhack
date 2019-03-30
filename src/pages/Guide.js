@@ -30,9 +30,9 @@ class Guide extends Component {
 
   showPlaces = (places) => {
     return places.map(place => (
-      <div key={place._id}>
-        <p>{place.name}</p>
-        <p>type: {place.what}</p>
+      <div className="place-container" key={place._id}>
+        <h4>{place.name}</h4>
+        <p>{place.what}</p>
         <p>{place.location}</p>
         <p>{place.description}</p>
       </div>
@@ -60,10 +60,13 @@ class Guide extends Component {
         <h1>Guide</h1>
         <h4>{title}</h4>
         <p>Address: {location}</p>
-        {isLoaded && !emptyArray(guide.places) ? this.showPlaces(guide.places) : null}
         <button onClick={this.handleClick}>
           {isFavorite ? "Already a Fav!" : "Add Fav!"}
         </button>
+        <h4>Places</h4>
+        <div className="places-wrap-div">
+          {isLoaded && !emptyArray(guide.places) ? this.showPlaces(guide.places) : null}
+        </div>
       </div>
     );
   }

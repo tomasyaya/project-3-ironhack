@@ -53,6 +53,11 @@ class GuideService {
     .then(({ data } )=> data)
   }
 
+  addComment(id, body) {
+    return this.api.put(`/api/comments/${id}`, body)
+    .then(({data}) => data)
+  }
+
 }
 
 const guideService = new GuideService();

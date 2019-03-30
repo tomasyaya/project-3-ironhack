@@ -405,7 +405,7 @@ body {
 
 .edit-main-div {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   text-align: center;
   background: #303030;
 }
@@ -544,6 +544,33 @@ body {
   color: #FF8C00;
   opacity: 0.9;
   margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.place-container {
+  width: 120px;
+  border-radius: 8px;
+  background: rgba(42, 42, 42, 0.8);
+  padding: 5px;
+}
+
+.place-container h4 {
+  font-size: 0.9em;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.places-wrap-div {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.place-container p {
+  color: #dfdfe5;
+  opacity: 0.6;
+  font-size: 0.7em;
 }
 
 /* ------ FAVORITE ------ */
