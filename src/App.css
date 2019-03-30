@@ -192,6 +192,7 @@ body {
 
 .login-main button {
   margin-bottom: 15px;
+  outline: none;
 }
 
 .login-main input::placeholder {
@@ -571,6 +572,30 @@ body {
   color: #dfdfe5;
   opacity: 0.6;
   font-size: 0.7em;
+}
+
+.comments-form form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.comments-form input {
+  height: 30px;
+  padding-left: 10px;
+  background: #424242;
+  border: none;
+  outline: none;
+  color: #dfdfe5;
+  opacity: 0.8;
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.comments-form input::placeholder {
+  color: #dfdfe5;
+  opacity: 0.6;
 }
 
 /* ------ FAVORITE ------ */

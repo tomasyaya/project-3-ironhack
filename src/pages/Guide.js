@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import guideServices from '../service/guideService';
 import { withAuth } from '../providers/AuthProvider';
 import { emptyArray } from '../helpers/conditionals'; 
+import CommentForm from '../components/CommentForm';
 
 class Guide extends Component {
 
   state = {
     guide: {},
+    comments: [],
     isLoaded: false,
     isFavorite: false
   }
@@ -19,9 +21,11 @@ class Guide extends Component {
     const { id } = this.props.match.params;
     try {
       const guide = await guideServices.getGuide(id);
+      const { comments } = guide;
       this.setState({
         guide,
-        isLoaded: true
+        isLoaded: true,
+        comments
       })
     } catch(error){
       console.log(error)
@@ -54,7 +58,9 @@ class Guide extends Component {
 
   render() {
     const { title, location } = this.state.guide;
-    const { isLoaded, guide, isFavorite } = this.state;
+    const { isLoaded, guide, isFavorite, comments } = this.state;
+    const { id } = this.props.match.params;
+    console.log(comments)
     return (
       <div className="guide-detail-main">
         <h1>Guide</h1>
@@ -67,6 +73,7 @@ class Guide extends Component {
         <div className="places-wrap-div">
           {isLoaded && !emptyArray(guide.places) ? this.showPlaces(guide.places) : null}
         </div>
+        <CommentForm  id={id}/>
       </div>
     );
   }

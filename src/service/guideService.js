@@ -50,13 +50,14 @@ class GuideService {
 
   editGuide(id, body) {
     return this.api.put(`/api/guide/${id}`, body)
-    .then(({ data } )=> data)
+      .then(({ data } )=> data)
   }
 
   addComment(id, body) {
     return this.api.put(`/api/comments/${id}`, body)
-    .then(({data}) => data)
+      .then(({data}) => data)
   }
+
 
 }
 
