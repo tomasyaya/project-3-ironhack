@@ -3,6 +3,7 @@ import guideServices from '../service/guideService';
 import { withAuth } from '../providers/AuthProvider';
 import { emptyArray } from '../helpers/conditionals'; 
 import CommentForm from '../components/CommentForm';
+import CommentCard from '../components/CommentCard';
 
 class Guide extends Component {
 
@@ -57,11 +58,18 @@ class Guide extends Component {
   }
 
   displayComments = () => {
-    const { comments } = this.state;
+    const { comments, guide } = this.state;
     return comments.map(comment => (
-      <div className="comment-card">
+      <div key={comment._id} className="comment-card">
         <h4>{comment.name}</h4>
         <p>{comment.comment}</p>
+        <CommentCard 
+          guide={guide}
+          commentId={comment._id}
+          name={comment.name}
+          comment={comment.comment}
+          getGuide={this.getGuide}
+        />
       </div>
     ))
   }
