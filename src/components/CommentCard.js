@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import guideService from '../service/guideService';
 import { withAuth } from '../providers/AuthProvider';
+import { checkEqual } from '../helpers/conditionals';
 
 class CommentCard extends Component {
-
 
 
   handleClick = async () => {
@@ -17,13 +17,16 @@ class CommentCard extends Component {
   }
 
   render() {
+    const { _id: userId } = this.props.user
+    const { creator, name, comment } = this.props
+    const button = <button onClick={this.handleClick}> X </button>
     return (
-      <div>
-        <h4>Title</h4>
-        <p>Description</p>
-        <button onClick={this.handleClick}>
-          X
-        </button>
+      <div className="comment-card">
+        <div>
+          <h4>{name}</h4>
+          <p>{comment}</p>
+        </div>
+        {checkEqual(userId, creator) ? button : null}
       </div>
     );
   }

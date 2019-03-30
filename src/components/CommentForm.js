@@ -24,6 +24,9 @@ class CommentForm extends Component {
     try {
       await guideService.addComment(id, comment)
       getGuide()
+      this.setState({
+        message: '',
+      })
     } catch(error) {
       console.log(error)
     }

@@ -16,6 +16,7 @@ import Splash from './pages/Splash';
 import Login from './pages/Login';
 import Guide from './pages/Guide';
 import Home from './pages/Home';
+import User from './pages/User';
 import './App.css';
 
 
@@ -41,6 +42,7 @@ class App extends Component {
             <PrivateRoute path="/user/guides" component={MyGuides} />
             <PrivateRoute path="/user/guide/:id" component={EditGuide} />
             <PrivateRoute path="/guide/:id" component={Guide} />
+            <PrivateRoute path="/author/:id" component={User} />
             <PrivateRoute path="/favorites" component={Favorites} />
             <PrivateRoute path="/" component={Home} />
           </Switch>
