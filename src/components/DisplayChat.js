@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import chatService from '../service/chatService';
+import ChatForm from '../components/ChatForm';
 
 class DisplayChat extends Component {
 
@@ -42,11 +43,16 @@ class DisplayChat extends Component {
     const { id } = this.props.match.params
     const { isLoaded } = this.state
     return (
-      <div className="display-chat-main">
-        <div className="display-chat-inner">
-          {isLoaded ? this.printMessages() : null }
+      <>
+        <div className="display-chat-main">
+          <div className="display-chat-inner">
+            {isLoaded ? this.printMessages() : null }
+          </div>
         </div>
-      </div>
+        <ChatForm 
+          searchChat={this.searchChats}
+        />
+      </>
     );
   }
 }

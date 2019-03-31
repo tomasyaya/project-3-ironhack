@@ -20,6 +20,7 @@ class ChatForm extends Component {
     event.preventDefault();
     const { message } = this.state;
     const { id } = this.props.match.params;
+    const { searchChat } = this.props
     const newMessage = {
       message
     }
@@ -28,6 +29,7 @@ class ChatForm extends Component {
       this.setState({
         message: '',
       })
+      searchChat();
     } catch(error){
       console.log(error)
     }

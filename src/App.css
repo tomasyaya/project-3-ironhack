@@ -732,6 +732,37 @@ body {
   margin-bottom: 10px;
 }
 
+/* ----- DISPLAY CHAT ------ */
+
+.display-chat-inner {
+  width: 80%;
+  margin: 10px auto;
+  background: #424242;
+  border-radius: 10px;
+  padding: 10px;
+
+}
+
+.message-card {
+  width: 80%;
+  margin: 5px auto;
+  background: #515151;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.message-card h4 {
+  color: #dfdfe5;
+  opacity: 0.5;
+  font-size: 0.7em;
+}
+
+.message-card p {
+  color: #dfdfe5;
+  opacity: 0.7;
+  font-size: 0.8em;
+}
+
 /* ------- FO0TER ----------- */
 
 

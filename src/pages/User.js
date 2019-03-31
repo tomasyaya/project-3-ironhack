@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
 import  chatService  from '../service/chatService';
-import ChatForm from '../components/ChatForm';
 import DisplayChats from '../components/DisplayChat';
 
 class User extends Component {
@@ -23,7 +22,6 @@ class User extends Component {
         <h2>User</h2>
         <button onClick={this.handleClick}>New</button>
         <DisplayChats />
-        <ChatForm />
       </div>
     );
   }
