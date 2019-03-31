@@ -98,7 +98,7 @@ class Guide extends Component {
         <p>
           Author: {isLoaded ? guide.creator.username : null}
         </p>
-          {isLoaded && isFavorite ? this.showAuthorLink(guide.creator._id) : null}
+          {isLoaded ? this.showAuthorLink(guide.creator._id) : null}
         <p>Address: {location}</p>
         <button onClick={this.handleClick}>
           {isFavorite ? "Already a Fav!" : "Add Fav!"}
