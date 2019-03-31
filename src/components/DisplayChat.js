@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import chatService from '../service/chatService';
 import ChatForm from '../components/ChatForm';
-
+import { withAuth } from '../providers/AuthProvider';
+import DeleteChat from '../components/DeleteChat';
+import { checkEqual } from "../helpers/conditionals";
 
 class DisplayChat extends Component {
 
@@ -42,16 +44,23 @@ class DisplayChat extends Component {
   printMessages = () => {
     const { messages } = this.state;
     const { id: participant } = this.props.match.params
-    
+    const { username } = this.props.user;
     return messages.map(messages => {
       const { _id, message, author } = messages;
+      
       return (
         <div key={_id} className="message-card">
-          <p>{message}</p>
-          <h4>{author}</h4>
-          <button onClick={(event) => {this.handleClick(event, _id, participant)}}>
-            X
-          </button>
+          <div>
+            <p>{message}</p>
+            <h4>{author}</h4>
+          </div>
+            {checkEqual(username, author) ? 
+              <DeleteChat 
+                handleClick={this.handleClick}
+                participant={participant}
+                messageId={_id} 
+              /> 
+            : null} 
         </div>
       )
     })
@@ -75,4 +84,4 @@ class DisplayChat extends Component {
   }
 }
 
-export default withRouter(DisplayChat);
+export default withAuth(withRouter(DisplayChat));
