@@ -12,6 +12,11 @@ class ChatService {
     return this.api.post(`/api/chat/${id}`)
       .then(({data}) => data)
   }
+
+  addMessage (id, body) {
+    return this.api.put(`/api/chat/${id}`, body)
+      .then(({data}) => data)
+  }
   
 }
 

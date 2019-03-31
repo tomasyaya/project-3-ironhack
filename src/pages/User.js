@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
 import  chatService  from '../service/chatService';
+import ChatForm from '../components/ChatForm';
 
 class User extends Component {
 
@@ -21,6 +22,7 @@ class User extends Component {
       <div className="user-main-div">
         <h2>User</h2>
         <button onClick={this.handleClick}>New</button>
+        <ChatForm />
       </div>
     );
   }
