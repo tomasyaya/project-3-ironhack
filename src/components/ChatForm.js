@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import chatService from '../service/chatService';
 import { withRouter } from 'react-router-dom';
-
+import { withAuth } from '../providers/AuthProvider';
 class ChatForm extends Component {
 
   state = {
@@ -25,6 +25,9 @@ class ChatForm extends Component {
     }
     try {
       await chatService.addMessage(id, newMessage)
+      this.setState({
+        message: '',
+      })
     } catch(error){
       console.log(error)
     }
@@ -33,8 +36,8 @@ class ChatForm extends Component {
   render() {
     const { message } = this.state;
     return (
-      <div>
-        <h2>Chat Form</h2>
+      <div className="chat-form">
+        <h2>New Message</h2>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="message" placeholder="message" value={message} onChange={this.onChange}/>
           <button type="submit">Send</button>
@@ -44,4 +47,4 @@ class ChatForm extends Component {
   }
 }
 
-export default withRouter(ChatForm);
+export default withRouter(withAuth(ChatForm));

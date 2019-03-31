@@ -681,6 +681,55 @@ body {
   opacity: 0.8;
   font-size: 2em;
   text-transform: uppercase;
+  padding-top: 20px;
+}
+
+.user-main-div button  {
+  color: #FF8C00;
+  font-size: 1em;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.chat-form {
+  background: #303030;
+  text-align: center;
+}
+
+.chat-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-form input {
+  height: 30px;
+  padding-left: 10px;
+  background: #424242;
+  border: none;
+  outline: none;
+  color: #dfdfe5;
+  opacity: 0.8;
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.chat-form h2 {
+  color: #dfdfe5;
+  opacity: 0.8;
+  font-size: 0.8em;
+  margin: 0;
+  padding: 5px;
+}
+
+.chat-form button {
+  text-decoration: none;
+  color: #FF8C00;
+  font-size: 0.7em;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 /* ------- FO0TER ----------- */
