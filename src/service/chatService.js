@@ -23,6 +23,10 @@ class ChatService {
       .then(({data}) => data)
   }
   
+  deleteMessage(id, participant) {
+    return this.api.delete(`/api/chat/${id}/${participant}`)
+      .then(({data}) => data)
+  }
 }
 
 const chatService = new ChatService();
