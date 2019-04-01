@@ -21,3 +21,13 @@ export const checkEqual = (one, two) => {
     return false
   }
 }
+
+export const checkEmptyFields = (...args) => {
+  let foundEmpty = false
+  args.forEach(arg => {
+    if(arg.length === 0 ){
+      foundEmpty = true
+    }
+  })
+  return foundEmpty
+}

@@ -52,7 +52,7 @@ class SearchInput extends Component {
       displayGuides(false);
       this.hideButton();
       getAllGuides();
-    }} id="kill-button">X</button>;
+    }} id="kill-button"></button>;
     return (
       <div>
       {searchInput}

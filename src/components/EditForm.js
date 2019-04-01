@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import guideService from '../service/guideService';
+import { checkEmptyFields } from '../helpers/conditionals';
 
 class EditForm extends Component {
 
@@ -7,12 +8,15 @@ class EditForm extends Component {
     name: '',
     location: '',
     what: '',
-    description: ''
+    description: '',
+    isError: false,
+    errorMessage: 'please complete all fields'
   }
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      isError: false
     })
   }
 
@@ -20,6 +24,10 @@ class EditForm extends Component {
     event.preventDefault()
     const { _id } = this.props.guide;
     const { getGuide } = this.props;
+    const { name, location, what, description } = this.state
+    if(checkEmptyFields(name, location, what, description)) {
+      this.setState({ isError: true })
+    }
     try {
       await guideService.editGuide(_id, this.state);
       getGuide();
@@ -27,7 +35,8 @@ class EditForm extends Component {
         name: '',
         location: '',
         what: '',
-        description: ''
+        description: '',
+        isError: false
       });
     } catch(error){
       console.log(error)
@@ -35,9 +44,10 @@ class EditForm extends Component {
   }
 
   render() {
-    const { name, location, what, description } = this.state;
+    const { name, location, what, description, isError, errorMessage } = this.state;
     return (
       <div>
+        {isError ? <p className="error-message">{errorMessage}</p> : null}
         <form className="edit-form" onSubmit={this.handleSubmit}>
           <input type="text" name="name" placeholder="name" value={name} onChange={this.handleChange}/>
           <input type="text" name="location" placeholder="address" value={location} onChange={this.handleChange}/>
