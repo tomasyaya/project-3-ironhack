@@ -14,6 +14,7 @@ import Messages from './pages/Messages';
 import MyGuides from './pages/MyGuides';
 import Signup from './pages/Signup';
 import Splash from './pages/Splash';
+import Replay from './pages/Replay';
 import Login from './pages/Login';
 import Guide from './pages/Guide';
 import Home from './pages/Home';
@@ -47,9 +48,9 @@ class App extends Component {
             <PrivateRoute path="/author/:id" component={User} />
             <PrivateRoute path="/favorites" component={Favorites} />
             <PrivateRoute path="/messages" component={Messages} />
+            <PrivateRoute path="/:chatid/replay" component={Replay} />
             <PrivateRoute path="/" component={Home} />
           </Switch>
-
           <FooterMenu />
         </div>
         </StateProvider>

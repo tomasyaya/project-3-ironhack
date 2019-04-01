@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
 import  chatService  from '../service/chatService';
-import DisplayChats from '../components/DisplayChat';
+import DisplayChat from '../components/DisplayChat';
 import userService from '../service/userService';
 import { emptyArray } from '../helpers/conditionals';
 
@@ -61,7 +61,7 @@ class User extends Component {
       <div className="user-main-div">
         {isLoaded ? <h2>{username}</h2> : null}
         <button onClick={this.handleClick}>New</button>
-        {hasMessage ? <DisplayChats /> : null}
+        {hasMessage ? <DisplayChat /> : null}
       </div>
     );
   }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import chatService from '../service/chatService';
 import { withRouter } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
+
+
 class ChatForm extends Component {
 
   state = {

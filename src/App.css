@@ -813,6 +813,123 @@ body {
   margin: 0;
 }
 
+/* ---------- MESSAGES ------- */
+
+.messages-main {
+  width: 100%;
+  height: 100vh;
+  background: #303030;
+}
+
+.messages-main h1 {
+  color: #dfdfe5;
+  opacity: 0.7;
+  font-size: 2em;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.message-card-container {
+  margin: 10px auto;
+  background: #424242;
+  width: 60%;
+  border-radius: 10px;
+  color: #dfdfe5;
+  font-size: 0.9em;
+  opacity: 0.6;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px; 
+}
+
+.message-card-container a {
+  color: #FF8C00;
+  font-size: 0.9em;
+  padding-top: 3px;
+}
+
+/* ---------- REPLAY MESSAGES ---- */
+
+.replay-main {
+  width: 100%;
+  height: 100vh;
+  background: #303030;
+}
+
+.replay-main h1 {
+  color: #dfdfe5;
+  opacity: 0.7;
+  font-size: 2em;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.replay-form-div {
+  background: #303030;
+}
+
+.replay-card {
+  background: #424242;
+  width: 60%;
+  margin: 10px auto;
+  border-radius: 8px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.replay-card h4 {
+  color: #dfdfe5;
+  opacity: 0.5;
+  font-size: 0.7em;
+}
+
+.replay-form input {
+  height: 30px;
+  padding-left: 10px;
+  background: #424242;
+  border-radius: 8px;
+  border: none;
+  color: #dfdfe5;
+  outline: none;
+}
+
+.replay-form input::placeholder {
+  color: #dfdfe5;
+  opacity: 0.4;
+}
+
+.replay-form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 5px auto; 
+}
+
+.replay-form button {
+  color: #FF8C00;
+  font-size: 0.9em;
+  opacity: 0.8;
+  padding-top: 10px;
+}
+
+.replay-card p {
+  color: #dfdfe5;
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+
+.replay-container {
+  width: 70%;
+  padding: 10px;
+  background: #515151;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+
+
 /* ------- FO0TER ----------- */
 
 

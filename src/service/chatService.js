@@ -18,6 +18,11 @@ class ChatService {
       .then(({data}) => data)
   }
 
+  replay(id, body) {
+    return this.api.put(`/api/replay/${id}`, body)
+      .then(({data}) => data)
+  }
+
   getChat(id) {
     return this.api.get(`/api/chat/${id}`)
       .then(({data}) => data)
@@ -25,6 +30,22 @@ class ChatService {
   
   deleteMessage(id, participant) {
     return this.api.delete(`/api/chat/${id}/${participant}`)
+      .then(({data}) => data)
+  }
+
+
+  getMessages(user) {
+    return this.api.get(`/api/messages/${user}`)
+      .then(({data}) => data)
+  }
+
+  getReplay(id) {
+    return this.api.get(`/api/replay/${id}`)
+      .then(({data}) => data)
+  }
+
+  deleteReplay(chatId, messageId) {
+    return this.api.delete(`/api/replay/${chatId}/${messageId}`)
       .then(({data}) => data)
   }
 }
