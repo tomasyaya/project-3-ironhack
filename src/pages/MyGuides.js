@@ -70,9 +70,11 @@ class MyGuides extends Component {
     return arr.map(guide => {
       const { title, location, _id } = guide;
       return <div key={_id} className="own-guides-div">
-        <OwnGuide title={title} location={location} />
         <DeleteButton _id={_id} refreshGuides={this.getMyGuides} />
-        <Link to={`/user/guide/${_id}`}>Improve!</Link>
+        <div>
+          <OwnGuide title={title} location={location} />
+          <Link to={`/user/guide/${_id}`}>Improve!</Link>
+        </div>
       </div>
       
     })

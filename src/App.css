@@ -34,6 +34,26 @@ body {
   padding: 2px 0;
 }
 
+#error-message {
+  color: red;
+  opacity: 0.8;
+  font-size: 0.7em;
+  padding: 2px 0;
+}
+
+.upload-form {
+  color: #dfdfe5;
+  opacity: 0.8;
+  padding: 10px;
+}
+
+.upload-form p {
+  color: #FF8C00;
+  opacity: 0.8;
+  font-size: 0.9em;
+  outline: none;
+}
+
 /* ----------- SPLASH SCREEN ------ */
 
 .splash-screen-main {
@@ -365,6 +385,8 @@ body {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .delete-btn button {
@@ -493,10 +515,11 @@ body {
 
 .places-div {
   background: #424242;
-  width: 80%;
+  width: 60%;
   margin: 10px auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 8px;
 }
 
 .places-div h4 {
@@ -504,6 +527,7 @@ body {
   opacity: 0.8;
   text-transform: uppercase;
   font-size: 0.8em;
+  padding: 0;
 }
 
 .places-div p {
@@ -516,6 +540,7 @@ body {
 #remove-place {
   color: #FF8C00;
   opacity: 0.9;
+  padding-bottom: 5px;
 }
 
 /* ----------- GUIDE DETAIL ---- */

@@ -20,10 +20,8 @@ class FileUpload extends Component {
     const image = {
       image: avatarURL
     }
-    console.log(image)
     try {
-      const uploadImage = await guideService.addMainImage(id, image);
-      console.log(uploadImage)
+      await guideService.addMainImage(id, image);
     } catch(error) {
       console.log(error)
     }
@@ -51,7 +49,7 @@ class FileUpload extends Component {
     
     return (
       <div>
-        <form>
+        <form className="upload-form">
           {this.state.isUploading &&
           <p>Progress: {this.state.progress}</p>
           }
