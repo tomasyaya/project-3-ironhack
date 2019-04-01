@@ -5,7 +5,9 @@ import { withAuth } from '../providers/AuthProvider';
 class ChatForm extends Component {
 
   state = {
-    message: ''
+    message: '',
+    errMessage: 'plase write something',
+    error: false
   }
 
 
@@ -19,6 +21,9 @@ class ChatForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { message } = this.state;
+    if(!message) {
+      this.setState({ error: true })
+    }
     const { id } = this.props.match.params;
     const { searchChat } = this.props
     const newMessage = {
@@ -28,6 +33,7 @@ class ChatForm extends Component {
       await chatService.addMessage(id, newMessage)
       this.setState({
         message: '',
+        error: false
       })
       searchChat();
     } catch(error){
@@ -36,10 +42,11 @@ class ChatForm extends Component {
   }
 
   render() {
-    const { message } = this.state;
+    const { message, error, errMessage } = this.state;
     return (
       <div className="chat-form">
         <h2>New Message</h2>
+        {error ? <p className="error-message">{errMessage}</p> : null }
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="message" placeholder="message" value={message} onChange={this.onChange}/>
           <button type="submit">Send</button>

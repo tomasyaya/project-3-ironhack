@@ -90,7 +90,7 @@ class Guide extends Component {
     const { title, location, image } = this.state.guide;
     const { isLoaded, guide, isFavorite, comments } = this.state;
     const { id } = this.props.match.params;
-    console.log(image)
+    console.log(guide)
     return (
       <div className="guide-detail-main">
         <h1>Guide</h1>
