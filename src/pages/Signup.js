@@ -30,7 +30,7 @@ class Signup extends Component {
             username: "",
             password: "",
             name: "",
-            email: ""
+            email: "",
         });
       })
       .catch(error => console.log(error) )
@@ -38,12 +38,15 @@ class Signup extends Component {
 
   handleChange = (event) => {  
     const {name, value} = event.target;
-    this.setState({[name]: value});
+    this.setState({
+      [name]: value,
+      validation: false
+    });
   }
 
   render() {
     const { username, password, name, email, validation } = this.state;
-    const message = <p>Please fill all the categories</p>
+    const message = <p id="error-message">Please fill all the categories</p>
     return (
       <div className="signup-main-container">
         <img src="./images/guide2.png"  className="guide-logo" alt="guide-me"/>
