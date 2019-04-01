@@ -143,6 +143,7 @@ body {
   font-size: 1.1em;
   color: #dfdfe5;
   margin: 10px auto;
+  outline: none;
 }
 
 #login {
@@ -410,6 +411,7 @@ body {
   height: 100vh;
   text-align: center;
   background: #303030;
+  padding-bottom: 100px;
 }
 
 
@@ -441,9 +443,9 @@ body {
   justify-content: start;
 }
 
-.edit-main-div h2 {
+.edit-main-div h4 {
   color: #dfdfe5;
-  font-size: 2em;
+  font-size: 1em;
   opacity: 0.9;
   padding-top: 15px;
   padding-block-end: 10px;
@@ -517,6 +519,12 @@ body {
   background: #303030;
   text-align: center;
   padding-top: 20px;
+}
+
+.guide-detail-main img {
+  width: 35%;
+  height: 20%;
+  border-radius: 8px;
 }
 
 .guide-detail-main h1 {

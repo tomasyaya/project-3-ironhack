@@ -87,14 +87,15 @@ class Guide extends Component {
   }
 
   render() {
-    const { title, location } = this.state.guide;
+    const { title, location, image } = this.state.guide;
     const { isLoaded, guide, isFavorite, comments } = this.state;
     const { id } = this.props.match.params;
-
+    console.log(image)
     return (
       <div className="guide-detail-main">
         <h1>Guide</h1>
         <h4>{title}</h4>
+        <img src={image} alt="pic" />
         <p>
           Author: {isLoaded ? guide.creator.username : null}
         </p>

@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
+import guideService from '../service/guideService';
+import { withRouter } from 'react-router-dom';
 
 class FileUpload extends Component {
 
   state = {
-    username: '',
-    avatar: '',
+    
     isUploading: false,
     progress: 0,
     avatarURL: ''
     };
 
 
-  handleChangeUsername = (event) => this.setState({username: event.target.value});
+  uploadImage = async () => {
+    const { avatarURL } = this.state;
+    const { id } = this.props.match.params;
+    const image = {
+      image: avatarURL
+    }
+    console.log(image)
+    try {
+      const uploadImage = await guideService.addMainImage(id, image);
+      console.log(uploadImage)
+    } catch(error) {
+      console.log(error)
+    }
+  }  
+
   handleUploadStart = () => this.setState({isUploading: true, progress: 0});
   handleProgress = (progress) => this.setState({progress});
   handleUploadError = (error) => {
@@ -21,31 +36,34 @@ class FileUpload extends Component {
     console.error(error);
   }
   handleUploadSuccess = (filename) => {
-    this.setState({avatar: filename, progress: 100, isUploading: false});
-    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
+    this.setState({progress: 100, isUploading: false});
+    firebase.storage().ref('images').child(filename).getDownloadURL()
+    .then(url => {
+      this.setState({
+        avatarURL: url
+      })
+      this.uploadImage()
+    })
+    
   };
   render() {
+    
+    
     return (
       <div>
         <form>
-          <label>Username:</label>
-          <input type="text" value={this.state.username} name="username" onChange={this.handleChangeUsername} />
-          <label>Avatar:</label>
           {this.state.isUploading &&
           <p>Progress: {this.state.progress}</p>
           }
-          {this.state.avatarURL &&
-          <img src={this.state.avatarURL} alt="pic"/>
-          }
           <FileUploader
-          accept="image/*"
-          name="avatar"
-          randomizeFilename
-          storageRef={firebase.storage().ref('images')}
-          onUploadStart={this.handleUploadStart}
-          onUploadError={this.handleUploadError}
-          onUploadSuccess={this.handleUploadSuccess}
-          onProgress={this.handleProgress}
+            accept="image/*"
+            name="avatar"
+            randomizeFilename
+            storageRef={firebase.storage().ref('images')}
+            onUploadStart={this.handleUploadStart}
+            onUploadError={this.handleUploadError}
+            onUploadSuccess={this.handleUploadSuccess}
+            onProgress={this.handleProgress}
           />
         </form>
       </div>
@@ -53,4 +71,4 @@ class FileUpload extends Component {
   }
 }
 
-export default FileUpload;
+export default withRouter(FileUpload);

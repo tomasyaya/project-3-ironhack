@@ -9,15 +9,21 @@ class Signup extends Component {
     username: "",
     password: "",
     name:"",
-    email:""
+    email:"",
+    validation: false,
+
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    // const username = this.state.username;
-    // const password = this.state.password;
     const { username, password, email, name } = this.state;
-   
+    if(!username || !password || !email || !name ) {
+      this.setState({
+        validation: true
+      })
+      console.log('inside validation')
+      return
+    }
     this.props.signup({ username, password , email, name})
       .then(() => {
         this.setState({
@@ -36,11 +42,13 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password, name, email } = this.state;
+    const { username, password, name, email, validation } = this.state;
+    const message = <p>Please fill all the categories</p>
     return (
       <div className="signup-main-container">
         <img src="./images/guide2.png"  className="guide-logo" alt="guide-me"/>
         <h2>Guide Me</h2>
+        {validation ? message : null}
         <div className="signup-inner-container">
           <form onSubmit={this.handleFormSubmit}>
             <input type="text" name="name" placeholder="name" value={name} onChange={this.handleChange} />

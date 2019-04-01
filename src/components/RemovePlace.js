@@ -15,7 +15,6 @@ class RemovePlace extends Component {
     }
   }
   render() {
-    console.log(this.props)
     const { id, place } = this.props;
     return (
       <div>
