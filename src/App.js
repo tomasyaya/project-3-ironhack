@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { faIgloo, faArrowLeft, faSignOutAlt, faSquare, faFolderPlus, faStopCircle, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faIgloo, faArrowLeft, faSignOutAlt, faSquare, faFolderPlus, faStopCircle, faHeart, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import StateProvider from './providers/StateProvider';
 import PrivateRoute from './components/PrivateRoute';
@@ -10,6 +10,7 @@ import Favorites from './pages/Favorites';
 import { Switch } from 'react-router-dom';
 import EditGuide from './pages/EditGuide';
 import Navbar from './components/Navbar';
+import Messages from './pages/Messages';
 import MyGuides from './pages/MyGuides';
 import Signup from './pages/Signup';
 import Splash from './pages/Splash';
@@ -22,7 +23,8 @@ import './App.css';
 
 
 
-library.add(faIgloo, faArrowLeft, faSignOutAlt, faSquare, faFolderPlus, faStopCircle, faHeart)
+
+library.add(faIgloo, faArrowLeft, faSignOutAlt, faSquare, faFolderPlus, faStopCircle, faHeart, faEnvelope)
 
 
 
@@ -44,6 +46,7 @@ class App extends Component {
             <PrivateRoute path="/guide/:id" component={Guide} />
             <PrivateRoute path="/author/:id" component={User} />
             <PrivateRoute path="/favorites" component={Favorites} />
+            <PrivateRoute path="/messages" component={Messages} />
             <PrivateRoute path="/" component={Home} />
           </Switch>
 

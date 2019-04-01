@@ -15,6 +15,11 @@ class Navbar extends Component {
           <FontAwesomeIcon icon="arrow-left" />
         </p>
         <p id="username">{ username }</p>
+        <Link to={`/messages`}>
+          <p>
+          <FontAwesomeIcon icon="envelope" />
+          </p>
+        </Link>
         <p onClick={logout}>
           <FontAwesomeIcon icon="sign-out-alt" />
         </p>
