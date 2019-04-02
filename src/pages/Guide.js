@@ -40,14 +40,19 @@ class Guide extends Component {
 
   showPlaces = () => {
     const { places } = this.state
-    return places.map(place => (
-      <div className="place-container" key={place._id}>
-        <h4>{place.name}</h4>
-        <p>{place.what}</p>
-        <p>{place.location}</p>
-        <p>{place.description}</p>
+    return places.map(place => {
+      const { images, location, name, type, description, _id } = place;
+      return (
+        <div className="place-container" key={_id}>
+          <img src={images[0].url}  alt="picture" />
+          <h4>{name}</h4>
+          <p>{type}</p>
+          <p>{location}</p>
+          <p>{description}</p>
+          <Link to={`/place/${place._id}`}>More</Link>
       </div>
-    ))
+      )
+    })
   }
 
   handleClick = async () => {

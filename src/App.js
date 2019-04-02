@@ -16,12 +16,12 @@ import MyGuides from './pages/MyGuides';
 import Signup from './pages/Signup';
 import Splash from './pages/Splash';
 import Replay from './pages/Replay';
+import Place from './pages/Place';
 import Login from './pages/Login';
 import Guide from './pages/Guide';
 import Home from './pages/Home';
 import User from './pages/User';
 import './App.css';
-
 
 
 
@@ -46,6 +46,7 @@ class App extends Component {
             <PrivateRoute path="/user/guide/:id" component={EditGuide} />
             <PrivateRoute path="/guide/:id" component={Guide} />
             <PrivateRoute path="/places/edit/:id" component={EditPlace} />
+            <PrivateRoute path="/place/:id" component={Place} />
             <PrivateRoute path="/author/:id" component={User} />
             <PrivateRoute path="/favorites" component={Favorites} />
             <PrivateRoute path="/messages" component={Messages} />

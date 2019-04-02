@@ -32,6 +32,11 @@ class PlaceService {
     return this.api.put(`/place/${id}`, body)
       .then(({data}) => data)
   }
+
+  addReview = (id, body) => {
+    return this.api.put(`/place/review/${id}`, body)
+      .then(({data}) => data)
+  }
   
 }
 
