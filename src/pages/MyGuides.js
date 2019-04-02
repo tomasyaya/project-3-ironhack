@@ -3,7 +3,6 @@ import { withAuth } from '../providers/AuthProvider';
 import { withState } from '../providers/StateProvider';
 import { checkIfEmpty } from '../helpers/conditionals';
 import guideService from '../service/guideService';
-import GuideCard from '../components/GuideCard';
 import DeleteButton from '../components/DeleteButton';
 import { Link } from 'react-router-dom';
 import OwnGuide from '../components/OwnGuide';

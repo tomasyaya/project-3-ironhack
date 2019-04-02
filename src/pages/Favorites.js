@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import guideService from '../service/guideService';
 import { emptyArray } from '../helpers/conditionals';
-import { Link } from 'react-router-dom';
 import GuideCard from '../components/GuideCard';
 
 class Favorites extends Component {

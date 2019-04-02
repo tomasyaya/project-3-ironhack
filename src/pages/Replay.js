@@ -51,7 +51,7 @@ class Replay extends Component {
   render() {
     const { chatid } = this.props.match.params;
     const { messages, isLoaded } = this.state;
-    console.log(messages)
+    console.log(this.props)
     return (
       <div className="replay-main">
         <h1>Replay</h1>

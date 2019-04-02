@@ -469,7 +469,7 @@ body {
 .edit-form {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .edit-main-div h4 {
@@ -499,6 +499,12 @@ body {
   padding-top: 5px;
 }
 
+.edit-main-div button {
+  color: #FF8C00;
+  opacity: 0.9;
+  font-size: 0.8em;
+}
+
 #edit {
   width: 30%;
   background: none;
@@ -522,6 +528,12 @@ body {
   border-radius: 8px;
 }
 
+.places-div a {
+  color: #FF8C00;
+  opacity: 0.9;
+  font-size: 0.8em;
+}
+
 .places-div h4 {
   color: #dfdfe5;
   opacity: 0.8;
@@ -543,11 +555,31 @@ body {
   padding-bottom: 5px;
 }
 
-/* ----------- GUIDE DETAIL ---- */
-
-.guide-detail-main {
+.edit-places-main {
   width: 100%;
   height: 100vh;
+  background: #303030;
+}
+
+.edit-places-main h2 {
+  color: #dfdfe5;
+  opacity: 0.8;
+  text-transform: uppercase;
+  font-size: 2em;
+  text-align: center;
+  padding-top: 30px;
+}
+
+/* ----------- GUIDE DETAIL ---- */
+
+
+.guide-detail-main-container {
+  height: 100vh;
+  background: #303030;
+}
+.guide-detail-main {
+  width: 100%;
+  height: 100%;
   background: #303030;
   text-align: center;
   padding-top: 20px;
@@ -572,7 +604,11 @@ body {
   opacity: 0.8;
   font-size: 1.1em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.comments-container {
+  background: #303030;
 }
 
 .guide-detail-main p {
@@ -595,13 +631,13 @@ body {
   border-radius: 8px;
   background: rgba(42, 42, 42, 0.8);
   padding: 5px;
-  margin-bottom: 10px;
+  margin:  5px 10px;
 }
 
 .place-container h4 {
   font-size: 0.9em;
   margin: 0;
-  padding-bottom: 5px;
+  padding: 5px;
 }
 
 .places-wrap-div {
@@ -872,10 +908,10 @@ body {
 
 .replay-card {
   background: #424242;
-  width: 60%;
+  width: 70%;
   margin: 10px auto;
   border-radius: 8px;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -906,6 +942,7 @@ body {
   flex-direction: column;
   width: 70%;
   margin: 5px auto; 
+  padding-bottom: 40px;
 }
 
 .replay-form button {

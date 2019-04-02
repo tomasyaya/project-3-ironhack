@@ -9,6 +9,7 @@ import AnonRoute from './components/AnonRoute';
 import Favorites from './pages/Favorites';
 import { Switch } from 'react-router-dom';
 import EditGuide from './pages/EditGuide';
+import EditPlace from './pages/EditPlace';
 import Navbar from './components/Navbar';
 import Messages from './pages/Messages';
 import MyGuides from './pages/MyGuides';
@@ -20,7 +21,6 @@ import Guide from './pages/Guide';
 import Home from './pages/Home';
 import User from './pages/User';
 import './App.css';
-
 
 
 
@@ -45,6 +45,7 @@ class App extends Component {
             <PrivateRoute path="/user/guides" component={MyGuides} />
             <PrivateRoute path="/user/guide/:id" component={EditGuide} />
             <PrivateRoute path="/guide/:id" component={Guide} />
+            <PrivateRoute path="/places/edit/:id" component={EditPlace} />
             <PrivateRoute path="/author/:id" component={User} />
             <PrivateRoute path="/favorites" component={Favorites} />
             <PrivateRoute path="/messages" component={Messages} />

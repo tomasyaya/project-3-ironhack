@@ -92,30 +92,34 @@ class Guide extends Component {
     const { id } = this.props.match.params;
     console.log(guide)
     return (
-      <div className="guide-detail-main">
-        <h1>Guide</h1>
-        <h4>{title}</h4>
-        <img src={image} alt="pic" />
-        <p>
-          Author: {isLoaded ? guide.creator.username : null}
-        </p>
-          {isLoaded ? this.showAuthorLink(guide.creator._id) : null}
-        <p>Address: {location}</p>
-        <button onClick={this.handleClick}>
-          {isFavorite ? "Already a Fav!" : "Add Fav!"}
-        </button>
-        <h4>Places</h4>
-        <div className="places-wrap-div">
-          {isLoaded && !emptyArray(guide.places) ? this.showPlaces(guide.places) : null}
+      <div className="guide-detail-main-container">
+        <div className="guide-detail-main">
+          <h1>Guide</h1>
+          <h4>{title}</h4>
+          <img src={image} alt="pic" />
+          <p>
+            Author: {isLoaded ? guide.creator.username : null}
+          </p>
+            {isLoaded ? this.showAuthorLink(guide.creator._id) : null}
+          <p>Address: {location}</p>
+          <button onClick={this.handleClick}>
+            {isFavorite ? "Already a Fav!" : "Add Fav!"}
+          </button>
+          <h4>Places</h4>
+          <div className="places-wrap-div">
+            {isLoaded && !emptyArray(guide.places) ? this.showPlaces(guide.places) : null}
+          </div>
+          <div className="comments-container">
+            <h4>Comments</h4>
+            <div className="show-comments-div">
+              {isLoaded && !emptyArray(comments) ? this.displayComments() : null}
+            </div>
+            <CommentForm 
+            id={id}
+            getGuide={this.getGuide}
+            />
+          </div>
         </div>
-        <h4>Comments</h4>
-        <div className="show-comments-div">
-          {isLoaded && !emptyArray(comments) ? this.displayComments() : null}
-        </div>
-        <CommentForm 
-         id={id}
-         getGuide={this.getGuide}
-         />
       </div>
     );
   }
