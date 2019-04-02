@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import guideService from '../service/guideService';
 import { checkEmptyFields } from '../helpers/conditionals';
+import placeService from '../service/placeService';
 
 class EditForm extends Component {
 
@@ -29,7 +30,8 @@ class EditForm extends Component {
       this.setState({ isError: true })
     }
     try {
-      await guideService.editGuide(_id, this.state);
+      // await guideService.editGuide(_id, this.state);
+      await placeService.newPlace(_id, this.state);
       getGuide();
       this.setState({
         name: '',
@@ -45,6 +47,7 @@ class EditForm extends Component {
 
   render() {
     const { name, location, what, description, isError, errorMessage } = this.state;
+    console.log(this.props.guide._id)
     return (
       <div>
         {isError ? <p className="error-message">{errorMessage}</p> : null}

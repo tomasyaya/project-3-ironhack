@@ -12,6 +12,21 @@ class PlaceService {
     return this.api.get(`/api/place/${id}`)
       .then(({data}) => data)
   }
+
+  newPlace(id, body){
+    return this.api.post(`/place/${id}`, body)
+      .then(({data}) => data)
+  }
+
+  getPlaces(id) {
+    return this.api.get(`/place/${id}`)
+      .then(({data}) => data)
+  }
+
+  deletePlace(id) {
+    return this.api.delete(`/place/${id}`)
+      .then(({data}) => data)
+  }
   
 }
 
