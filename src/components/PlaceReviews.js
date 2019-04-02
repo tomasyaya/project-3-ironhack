@@ -16,6 +16,7 @@ class PlaceReviews extends Component {
   }
 
   handleSubmit = async (event) => {
+    const { getPlace } = this.props
     event.preventDefault()
     const { review } = this.state;
     const newReview = {
@@ -24,13 +25,14 @@ class PlaceReviews extends Component {
     const { id } = this.props.match.params
     try {
       await placeService.addReview(id, newReview)
+      getPlace(id)
     } catch(error) {
       console.log(error)
     }
   }
   render() {
 
-    console.log(this.props)
+    
 
     return (
       <div>
