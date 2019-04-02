@@ -4,6 +4,7 @@ import { withAuth } from '../providers/AuthProvider';
 import { emptyArray } from '../helpers/conditionals'; 
 import CommentForm from '../components/CommentForm';
 import CommentCard from '../components/CommentCard';
+import placeService from '../service/placeService';
 import { Link } from 'react-router-dom';
 
 class Guide extends Component {
@@ -12,7 +13,8 @@ class Guide extends Component {
     guide: {},
     comments: [],
     isLoaded: false,
-    isFavorite: false
+    isFavorite: false,
+    places: []
   }
 
   componentDidMount(){
@@ -23,18 +25,21 @@ class Guide extends Component {
     const { id } = this.props.match.params;
     try {
       const guide = await guideServices.getGuide(id);
+      const places = await placeService.getPlaces(id)
       const { comments } = guide;
       this.setState({
         guide,
         isLoaded: true,
-        comments
+        comments,
+        places: [...places]
       })
     } catch(error){
       console.log(error)
     }
   }
 
-  showPlaces = (places) => {
+  showPlaces = () => {
+    const { places } = this.state
     return places.map(place => (
       <div className="place-container" key={place._id}>
         <h4>{place.name}</h4>
@@ -88,7 +93,7 @@ class Guide extends Component {
 
   render() {
     const { title, location, image } = this.state.guide;
-    const { isLoaded, guide, isFavorite, comments } = this.state;
+    const { isLoaded, guide, isFavorite, comments, places } = this.state;
     const { id } = this.props.match.params;
     console.log(guide)
     return (
@@ -107,7 +112,7 @@ class Guide extends Component {
           </button>
           <h4>Places</h4>
           <div className="places-wrap-div">
-            {isLoaded && !emptyArray(guide.places) ? this.showPlaces(guide.places) : null}
+            {isLoaded && !emptyArray(places) ? this.showPlaces() : null}
           </div>
           <div className="comments-container">
             <h4>Comments</h4>

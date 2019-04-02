@@ -32,6 +32,8 @@ body {
   opacity: 0.8;
   font-size: 0.7em;
   padding: 2px 0;
+  margin: 2px auto;
+  text-align: center;
 }
 
 #error-message {
