@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import placeService from '../service/placeService';
 import PlaceReviews from '../components/PlaceReviews';
 import { emptyArray } from '../helpers/conditionals';
+import CommentForm from '../components/CommentForm';
+import PlaceComment from '../components/PlaceComment';
 
 class Place extends Component {
 
@@ -16,7 +18,8 @@ class Place extends Component {
       3: 0,
       4: 0,
       5: 0
-    }
+    },
+    comments: []
   }
 
   componentDidMount() {
@@ -28,10 +31,11 @@ class Place extends Component {
     const { id } = this.props.match.params
     try {
       const place = await placeService.getPlace(id)
-      const { reviews } = place
+      const { reviews, comments } = place
       this.setState({
         place,
-        reviews: [...reviews]
+        reviews: [...reviews],
+        comments: [...comments]
       })
       this.sumReviews()
       this.averageReview()
@@ -74,10 +78,28 @@ class Place extends Component {
     })
   }
 
+  printComments = () => {
+    const { comments } = this.state;
+    return comments.map(comment => {
+      const { message, author, _id, creator } = comment
+      return (
+        <PlaceComment
+          message={message}
+          id={_id}
+          author={author}
+          key={_id}
+          getPlaces={this.getPlaces}
+          creator={creator}
+        />
+      )
+    })
+  }
+
   render() {
     const { type, name, location, description, images } = this.state.place
-    const { isLoaded, average, reviewCount } = this.state;
-    console.log(reviewCount)
+    const { isLoaded, average, comments } = this.state;
+    const { id } = this.props.match.params;
+    console.log(comments)
     return (
       <div className="place-detail-main">
         <h2>{name}</h2>
@@ -96,6 +118,14 @@ class Place extends Component {
         <h4>Pictures</h4>
         <div className="place-image-container">
           {isLoaded && !emptyArray(images) ? this.printImages() : null}
+        </div>
+        <div>
+          {isLoaded && !emptyArray(comments) ? this.printComments() : null}
+          <CommentForm
+            getInfo={this.getPlaces}
+            addComment={placeService.addComment}
+            id={id}
+          />
         </div>
       </div>
     );

@@ -100,7 +100,6 @@ class Guide extends Component {
     const { title, location, image } = this.state.guide;
     const { isLoaded, guide, isFavorite, comments, places } = this.state;
     const { id } = this.props.match.params;
-    console.log(guide)
     return (
       <div className="guide-detail-main-container">
         <div className="guide-detail-main">
@@ -126,7 +125,8 @@ class Guide extends Component {
             </div>
             <CommentForm 
             id={id}
-            getGuide={this.getGuide}
+            getInfo={this.getGuide}
+            addComment={guideServices.addComment}
             />
           </div>
         </div>
