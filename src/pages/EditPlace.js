@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import placeService from '../service/placeService';
-import { checkEqual } from '../helpers/conditionals';
+import FileUpload from '../components/FileUpload';
+import { emptyArray } from '../helpers/conditionals';
+
 
 class EditPlace extends Component {
 
   state = {
     place: {},
-    chatId: ''
+    isLoaded: false
   }
 
   componentDidMount() {
@@ -16,27 +18,46 @@ class EditPlace extends Component {
   searchPlace = async () => {
     const { id } = this.props.match.params;
     try {
-      const  guide = await placeService.getPlace(id)
-      const { places } = guide;
-      const filterPlace = places.filter(place => checkEqual(place._id, id))
+      const  place = await placeService.getPlace(id)
       this.setState({
-        place: filterPlace[0],
-        chatId: guide._id
+        place,
+        isLoaded: true
       })
     } catch(error) {
       console.log(error)
     }
   }
 
+  printImages = () => {
+    const { place: { images } } = this.state;
+    return images.map(image => {
+      const { url, _id } = image;
+      return (
+        <img 
+          className="places-images-container"
+          src={url} 
+          alt="img" 
+          key={_id}  
+        />
+      )
+    })
+  }
+
   render() {
-    const { name, what, location  } = this.state.place
-    console.log(this.state.chatId)
+    const { name, type, location, description, images  } = this.state.place
+    const { isLoaded } = this.state;
+    console.log(images)
     return (
       <div className="edit-places-main">
         <h2>IMPROVE PLACE</h2>
         <p>{name}</p>
-        <p>{what}</p>
+        <p>{type}</p>
         <p>{location}</p>
+        <p>{description}</p>
+        {isLoaded && !emptyArray(images) ? this.printImages() : null}
+        <FileUpload 
+          addImage={placeService.addImage}
+        />
       </div>
     );
   }

@@ -29,8 +29,7 @@ class EditForm extends Component {
     if(checkEmptyFields(name, location, what, description)) {
       this.setState({ isError: true })
     }
-    try {
-      // await guideService.editGuide(_id, this.state);
+    try {      
       await placeService.newPlace(_id, this.state);
       getGuide();
       this.setState({

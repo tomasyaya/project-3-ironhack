@@ -9,7 +9,7 @@ class PlaceService {
   }
 
   getPlace(id) {
-    return this.api.get(`/api/place/${id}`)
+    return this.api.get(`/place/one/${id}`)
       .then(({data}) => data)
   }
 
@@ -25,6 +25,11 @@ class PlaceService {
 
   deletePlace(id) {
     return this.api.delete(`/place/${id}`)
+      .then(({data}) => data)
+  }
+
+  addImage = (id, body) => {
+    return this.api.put(`/place/${id}`, body)
       .then(({data}) => data)
   }
   

@@ -63,7 +63,7 @@ class GuideService {
       .then(({data}) => data)
   }
 
-  addMainImage(id, body){
+  addMainImage = (id, body) => {
     return this.api.put(`/api/image/${id}`, body)
       .then(({data}) => data)
   }

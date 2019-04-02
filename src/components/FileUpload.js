@@ -17,11 +17,13 @@ class FileUpload extends Component {
   uploadImage = async () => {
     const { avatarURL } = this.state;
     const { id } = this.props.match.params;
+    const { addImage } = this.props;
+    console.log(addImage)
     const image = {
       image: avatarURL
     }
     try {
-      await guideService.addMainImage(id, image);
+      await addImage(id, image)
     } catch(error) {
       console.log(error)
     }

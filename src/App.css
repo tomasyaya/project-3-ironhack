@@ -572,6 +572,13 @@ body {
   padding-top: 30px;
 }
 
+.places-images-container {
+  width: 30%;
+  height: 20%;
+  border-radius: 10px;
+  margin: 10px;
+}
+
 /* ----------- GUIDE DETAIL ---- */
 
 

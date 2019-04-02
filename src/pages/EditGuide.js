@@ -8,6 +8,7 @@ import FileUpload from '../components/FileUpload';
 import { Link } from 'react-router-dom';
 import placeService from '../service/placeService';
 
+
 class EditGuide extends Component {
 
   state = {
@@ -76,7 +77,9 @@ class EditGuide extends Component {
     return (
       <div className="edit-main-div">
         <h4>Add Image</h4>
-        <FileUpload />
+        <FileUpload 
+          addImage={guideService.addMainImage}
+        />
         <h4>Add Places</h4>
         {!checkIfEmpty(guide) ? <EditForm getGuide={this.getGuide} guide={guide}/> : null}
         <h4>Your Places</h4>
