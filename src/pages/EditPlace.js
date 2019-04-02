@@ -54,10 +54,14 @@ class EditPlace extends Component {
         <p>{type}</p>
         <p>{location}</p>
         <p>{description}</p>
-        {isLoaded && !emptyArray(images) ? this.printImages() : null}
-        <FileUpload 
-          addImage={placeService.addImage}
-        />
+        <div className="images-container">
+          {isLoaded && !emptyArray(images) ? this.printImages() : null}
+        </div>
+        <div className="file-uploaded">
+          <FileUpload 
+            addImage={placeService.addImage}
+          />
+        </div>
       </div>
     );
   }

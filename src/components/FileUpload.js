@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
-import guideService from '../service/guideService';
 import { withRouter } from 'react-router-dom';
 
 class FileUpload extends Component {
@@ -18,7 +17,6 @@ class FileUpload extends Component {
     const { avatarURL } = this.state;
     const { id } = this.props.match.params;
     const { addImage } = this.props;
-    console.log(addImage)
     const image = {
       image: avatarURL
     }
