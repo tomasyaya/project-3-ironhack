@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import guideService from '../service/guideService';
 import { checkEmptyFields } from '../helpers/conditionals';
 import placeService from '../service/placeService';
 

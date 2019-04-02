@@ -44,7 +44,7 @@ class Guide extends Component {
       const { images, location, name, type, description, _id } = place;
       return (
         <div className="place-container" key={_id}>
-          <img src={images[0].url}  alt="picture" />
+          <img src={images[0].url}  alt="place-img" />
           <h4>{name}</h4>
           <p>{type}</p>
           <p>{location}</p>
