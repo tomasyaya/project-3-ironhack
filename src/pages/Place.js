@@ -6,6 +6,9 @@ import CommentForm from '../components/CommentForm';
 import CommentCard from '../components/CommentCard';
 import Like from '../components/Like';
 
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
+
 class Place extends Component {
 
   state = {
@@ -148,4 +151,4 @@ class Place extends Component {
   }
 }
 
-export default Place;
+export default connect(null, { sendError })(Place);
