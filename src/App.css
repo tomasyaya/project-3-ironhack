@@ -728,10 +728,11 @@ body {
 
 .place-detail-main {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: none;
   background: #303030;
   text-align: center;
+  overflow: none;
 }
 
 .place-detail-main h2 {
@@ -835,6 +836,10 @@ body {
 .comments-form input::placeholder {
   color: #dfdfe5;
   opacity: 0.6;
+}
+
+.comments-form-card {
+  background: #303030;
 }
 
 .comment-card {

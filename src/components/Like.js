@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+
+
 class Like extends Component {
 
   state = {
     likes: 0
+  }
+
+  componentDidMount() {
+    this.searchLikes()
+  }
+
+  searchLikes = async () => {
+    const { getLikes } = this.props;
+    const { id } = this.props.match.params;
+    try {
+      const { likes } = await getLikes(id)
+      this.setState({
+        likes: likes.length
+      })
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   handleClick =  async () => {
@@ -11,16 +30,17 @@ class Like extends Component {
     const { likes } = this.props;
     try {
       await likes(id)
+      this.searchLikes()
     } catch(error) {
       console.log(error)
     }
   }
 
   render() {
-    console.log(this.props)
+    const { likes } = this.state;
     return (
       <div>
-        <h1>Like</h1>        
+        <h4>{likes}</h4>        
         <button onClick={this.handleClick}>Like</button>      
       </div>
     );

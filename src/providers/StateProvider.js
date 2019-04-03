@@ -17,6 +17,8 @@ export const withState = (Comp) => {
               guides={stateStore.guides}
               searchGuide={stateStore.searchGuide}
               getAllGuides={stateStore.getAllGuides}
+              getTotalLikes={stateStore.sumLikes}
+              totalLikes={stateStore.likes}
               {...this.props} />
           }}
         </Consumer>
@@ -27,7 +29,9 @@ export const withState = (Comp) => {
 
  class StateProvider extends Component {
   state = {
-    guides: []
+    guides: [],
+    likesArray: [],
+    likes: 0
   }
 
   componentDidMount(){
@@ -55,14 +59,24 @@ export const withState = (Comp) => {
     console.log(guides)
   }
 
+  sumLikes = (likesInPlace) => {
+    const { likesArray } = this.state
+    this.setState({
+      likesArray: [...likesArray, ...likesInPlace],
+      likes: likesArray.length
+    })
+  }
+
   render() {
       const { children } = this.props;
-      const { guides }= this.state;
+      const { guides, likes }= this.state;
         return (
           <Provider value={{
             guides,
             searchGuide: this.searchGuide,
-            getAllGuides: this.getAllGuides  
+            getAllGuides: this.getAllGuides,
+            sumLikes: this.sumLikes,
+            likes
             }}>
             {children}
           </Provider>    

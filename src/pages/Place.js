@@ -12,6 +12,8 @@ class Place extends Component {
     place: {},
     isLoaded: false,
     reviews: [],
+    likesArray: [],
+    totalLikes: 0,
     average: 0,
     reviewCount: {
       1: 0,
@@ -32,11 +34,14 @@ class Place extends Component {
     const { id } = this.props.match.params
     try {
       const place = await placeService.getPlace(id)
-      const { reviews, comments } = place
+      const { reviews, comments, likes } = place
+      const { likesArray } = this.state;
       this.setState({
         place,
         reviews: [...reviews],
-        comments: [...comments]
+        comments: [...comments],
+        likesArray: [...likes],
+        totalLikes: likesArray.length
       })
       this.sumReviews()
       this.averageReview()
@@ -55,6 +60,8 @@ class Place extends Component {
       reviewCount[review] += 1;
     })
   }
+
+
 
   averageReview = () => {
     const { reviews } =  this.state;
@@ -101,8 +108,9 @@ class Place extends Component {
 
   render() {
     const { type, name, location, description, images } = this.state.place
-    const { isLoaded, average, comments } = this.state;
+    const { isLoaded, average, comments, totalLikes } = this.state;
     const { id } = this.props.match.params;
+    
     return (
       <div className="place-detail-main">
         <h2>{name}</h2>
@@ -115,6 +123,8 @@ class Place extends Component {
           />
           <Like 
             likes={placeService.likes}
+            getLikes={placeService.getPlace}
+            total={totalLikes}
           />
           <div className="reviews-inner">
             <h4>Reviews Average</h4>
@@ -125,7 +135,7 @@ class Place extends Component {
         <div className="place-image-container">
           {isLoaded && !emptyArray(images) ? this.printImages() : null}
         </div>
-        <div>
+        <div className="comments-form-card">
           {isLoaded && !emptyArray(comments) ? this.printComments() : null}
           <CommentForm
             getInfo={this.getPlaces}

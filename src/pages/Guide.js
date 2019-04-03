@@ -6,6 +6,8 @@ import CommentForm from '../components/CommentForm';
 import CommentCard from '../components/CommentCard';
 import guideService from '../service/guideService';
 import placeService from '../service/placeService';
+import { withState } from '../providers/StateProvider';
+import PlaceCard from '../components/PlaceCard';
 import { Link } from 'react-router-dom';
 
 class Guide extends Component {
@@ -15,7 +17,9 @@ class Guide extends Component {
     comments: [],
     isLoaded: false,
     isFavorite: false,
-    places: []
+    places: [],
+    likesArray: [],
+    likes: 0
   }
 
   componentDidMount(){
@@ -30,10 +34,10 @@ class Guide extends Component {
       const { comments } = guide;
       this.setState({
         guide,
-        isLoaded: true,
         comments,
         places: [...places]
       })
+      this.sumLikes(places)
     } catch(error){
       console.log(error)
     }
@@ -44,17 +48,28 @@ class Guide extends Component {
     return places.map(place => {
       const { images, location, name, type, description, _id } = place;
       return (
-        <div className="place-container" key={_id}>
-          {!emptyArray(images) ? 
-            <img src={images[0].url}  alt="place-img" /> 
-          : null }
-          <h4>{name}</h4>
-          <p>{type}</p>
-          <p>{location}</p>
-          <p>{description}</p>
-          <Link to={`/place/${place._id}`}>More</Link>
-      </div>
+        <PlaceCard
+          sumLikes={this.sumLikes} 
+          name={name}
+          type={type}
+          location={location}
+          description={description}
+          images={images}
+          id={_id}
+          key={_id}
+        />
       )
+    })
+  }
+
+  sumLikes = (places) => {
+   return places.map(place => {
+      const { likes } = place;
+      return  this.setState({
+        likes: this.state.likes + likes.length,
+        isLoaded: true,
+      })
+      
     })
   }
 
@@ -81,6 +96,7 @@ class Guide extends Component {
   displayComments = () => {
     const { comments, guide } = this.state;
     const { _id } = guide;
+    console.log(this.state.likes)
     return comments.map(comment => (
         <CommentCard
           deleteComment={guideService.deleteComment} 
@@ -103,14 +119,16 @@ class Guide extends Component {
 
   render() {
     const { title, location, image } = this.state.guide;
-    const { isLoaded, guide, isFavorite, comments, places } = this.state;
+    const { isLoaded, guide, isFavorite, comments, places, likes } = this.state;
     const { id } = this.props.match.params;
+    console.log(likes)
     return (
       <div className="guide-detail-main-container">
         <div className="guide-detail-main">
           <h1>Guide</h1>
           <h4>{title}</h4>
           <img src={image} alt="pic" />
+          {isLoaded ? <h4>total likes: {likes}</h4> : null}
           <p>
             Author: {isLoaded ? guide.creator.username : null}
           </p>

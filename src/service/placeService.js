@@ -8,7 +8,7 @@ class PlaceService {
     });
   }
 
-  getPlace(id) {
+  getPlace = (id) => {
     return this.api.get(`/place/one/${id}`)
       .then(({data}) => data)
   }
@@ -52,6 +52,8 @@ class PlaceService {
     return this.api.put(`/place/like/${id}`)
       .then(({data}) => data)
   }
+
+  
   
 }
 
