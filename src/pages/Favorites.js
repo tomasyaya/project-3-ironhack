@@ -40,7 +40,6 @@ class Favorites extends Component {
   }
   render() {
     const { favorites, isLoaded } = this.state;
-    console.log(favorites)
     return (
       <div className="favorite-main-div">
         <h2>Favorites</h2>

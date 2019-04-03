@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import guideServices from '../service/guideService';
 import { withAuth } from '../providers/AuthProvider';
-import { emptyArray } from '../helpers/conditionals'; 
+import { emptyArray, checkUndefined } from '../helpers/conditionals'; 
 import CommentForm from '../components/CommentForm';
 import CommentCard from '../components/CommentCard';
 import guideService from '../service/guideService';
@@ -34,7 +34,8 @@ class Guide extends Component {
       this.setState({
         guide,
         comments,
-        places: [...places]
+        places: [...places],
+        isLoaded: true
       })
       this.sumLikes(places)
     } catch(error){
@@ -94,20 +95,20 @@ class Guide extends Component {
 
   displayComments = () => {
     const { comments, guide } = this.state;
-    const { _id } = guide;
-    console.log(this.state.likes)
-    return comments.map(comment => (
-        <CommentCard
-          deleteComment={guideService.deleteComment} 
-          mainId={_id}
-          commentId={comment._id}
-          name={comment.name}
-          comment={comment.comment}
-          stateCallback={this.getGuide}
-          creator={comment.creator}
-          key={comment._id}
-        />
-    ))
+    const { _id: guideId } = guide;
+    return comments.map(comments => {
+      const { _id, name, comment, creator } = comments
+      return <CommentCard
+                deleteComment={guideService.deleteComment} 
+                mainId={guideId}
+                commentId={_id}
+                name={name}
+                comment={comment}
+                stateCallback={this.getGuide}
+                creator={creator}
+                key={_id}
+              />
+    })
   }
 
   showAuthorLink = (id) => {
@@ -120,12 +121,16 @@ class Guide extends Component {
     const { title, location, image } = this.state.guide;
     const { isLoaded, guide, isFavorite, comments, places, likes } = this.state;
     const { id } = this.props.match.params;
+   
     return (
       <div className="guide-detail-main-container">
         <div className="guide-detail-main">
           <h1>Guide</h1>
           <h4>{title}</h4>
-          <img src={image} alt="pic" />
+          {!checkUndefined(image) ? 
+            <img src={image} alt="pic" /> 
+            : <p>{"No picture"}</p>  
+          }
           {isLoaded ? <h4>total likes: {likes}</h4> : null}
           <p>
             Author: {isLoaded ? guide.creator.username : null}

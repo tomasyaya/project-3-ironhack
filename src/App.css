@@ -25,6 +25,7 @@ p {
 
 body {
   margin: 0;
+  
 }
 
 .error-message {
@@ -72,6 +73,7 @@ body {
   font-size: 3em;
   letter-spacing: 1px;
   margin: 20px;
+  text-transform: uppercase;
 }
 
 .splash-screen-inner {
@@ -130,6 +132,7 @@ body {
 .signup-main-container h2 {
   font-size: 2em;
   margin: 5px auto;
+  text-transform: uppercase;
 }
 
 .signup-main-container input {
@@ -203,6 +206,7 @@ body {
 .login-main h2 {
   font-size: 2em;
   color: #dfdfe5;
+  text-transform: uppercase;
 }
 
 .login-main form {
@@ -250,6 +254,8 @@ body {
   padding-top: 10px;
   width: 100%;
   height: 40px;
+  position: fixed;
+  z-index: 3;
 }
 
 .navbar p {
@@ -280,7 +286,7 @@ body {
   font-size: 2em;
   color: #dfdfe5;
   opacity: 0.9;
-  padding-top: 40px;
+  padding-top: 80px;
   text-transform: uppercase;
 }
 
@@ -350,7 +356,7 @@ body {
 .my-guides-main h2 {
   color: #dfdfe5;
   opacity: 0.9;
-  padding-top: 20px;
+  padding-top: 60px;
   font-size: 2em;
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -445,6 +451,7 @@ body {
   text-align: center;
   background: #303030;
   padding-bottom: 100px;
+  padding-top: 100px;
 }
 
 
@@ -543,6 +550,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding-top: 40px;
 }
 
 .edit-places-main h2 {
@@ -635,7 +643,7 @@ body {
   height: 100%;
   background: #303030;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 
 .guide-detail-main img {
@@ -729,11 +737,12 @@ body {
 
 .place-detail-main {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: none;
   background: #303030;
   text-align: center;
-  overflow: none;
+  overflow: auto;
+  padding-top: 40px;
 }
 
 .place-detail-main h2 {
@@ -891,7 +900,7 @@ body {
   font-size: 2em;
   text-transform: uppercase;
   margin-bottom: 20px;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 
 /* --------- USER ----------- */
@@ -908,7 +917,7 @@ body {
   opacity: 0.8;
   font-size: 2em;
   text-transform: uppercase;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 
 .user-main-div button  {
@@ -1006,6 +1015,7 @@ body {
   width: 100%;
   height: 100vh;
   background: #303030;
+  padding-top: 30px;
 }
 
 .messages-main h1 {
@@ -1042,6 +1052,8 @@ body {
   width: 100%;
   height: 100vh;
   background: #303030;
+  overflow: hidden;
+  padding-top: 30px;
 }
 
 .replay-main h1 {

@@ -31,3 +31,11 @@ export const checkEmptyFields = (...args) => {
   })
   return foundEmpty
 }
+
+export const checkUndefined = (input) => {
+  let isUndefined = false
+  if(input === undefined) {
+    isUndefined = true
+  }
+  return isUndefined
+}
