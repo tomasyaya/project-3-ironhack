@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
 import { withState } from '../providers/StateProvider';
-import { checkIfEmpty } from '../helpers/conditionals';
+import { checkIfEmpty, checkEmptyFields } from '../helpers/conditionals';
 import guideService from '../service/guideService';
 import DeleteButton from '../components/DeleteButton';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,9 @@ class MyGuides extends Component {
     title: '',
     location: '',
     showButton: true,
-    guides: []
+    guides: [],
+    validation: false,
+    message: 'Please complete all fields'
   }
 
   componentDidMount(){
@@ -34,14 +36,20 @@ class MyGuides extends Component {
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      validation: false
     })
-    console.log(this.state)
   }
 
   handleSubmit = async (event) => {
     event.preventDefault();
     const { title, location } = this.state;
+    if(checkEmptyFields(title, location)) {
+      this.setState({
+        validation: true
+      })
+      return
+    }
     const guide = {
       title,
       location,
@@ -81,7 +89,7 @@ class MyGuides extends Component {
 
   render() {
     
-    const { location, title, showButton, guides } = this.state;
+    const { location, title, showButton, guides, message, validation } = this.state;
     const button = <button onClick={this.showFrom}>New</button>
     const createForm = <form className="create-guide-form" onSubmit={this.handleSubmit}>
                           <label htmlFor="title">Title</label>
@@ -94,6 +102,7 @@ class MyGuides extends Component {
       <div className="my-guides-main">
           <h2>My Guides</h2>
           {showButton ? button : createForm}
+          {validation ? <p>{message}</p> : null}
           {!checkIfEmpty(guides) ? this.printGuides(guides) : null}
       </div>
     )

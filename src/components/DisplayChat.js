@@ -26,7 +26,6 @@ class DisplayChat extends Component {
         messages: [...messages],
         isLoaded: true
       })
-      console.log(this.state)
     } catch(error) {
       console.log(error)
     }

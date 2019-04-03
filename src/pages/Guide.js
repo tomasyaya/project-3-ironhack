@@ -6,7 +6,6 @@ import CommentForm from '../components/CommentForm';
 import CommentCard from '../components/CommentCard';
 import guideService from '../service/guideService';
 import placeService from '../service/placeService';
-import { withState } from '../providers/StateProvider';
 import PlaceCard from '../components/PlaceCard';
 import { Link } from 'react-router-dom';
 
@@ -121,7 +120,6 @@ class Guide extends Component {
     const { title, location, image } = this.state.guide;
     const { isLoaded, guide, isFavorite, comments, places, likes } = this.state;
     const { id } = this.props.match.params;
-    console.log(likes)
     return (
       <div className="guide-detail-main-container">
         <div className="guide-detail-main">

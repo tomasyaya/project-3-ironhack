@@ -708,6 +708,7 @@ body {
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
+  background: #303030;
 }
 
 .place-container p {

@@ -33,7 +33,7 @@ class SearchInput extends Component {
 
 
   render() {
-    console.log(this.state.value)
+    
     const { searchGuide, getAllGuides, displayGuides } = this.props;
     const { showButton, value } = this.state;
     const searchInput = <input type="text" placeholder="search" name="location" value={value} onChange={(event) => {

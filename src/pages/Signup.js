@@ -21,7 +21,6 @@ class Signup extends Component {
       this.setState({
         validation: true
       })
-      console.log('inside validation')
       return
     }
     this.props.signup({ username, password , email, name})

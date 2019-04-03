@@ -46,7 +46,7 @@ class EditPlace extends Component {
   render() {
     const { name, type, location, description, images  } = this.state.place
     const { isLoaded } = this.state;
-    console.log(images)
+    
     return (
       <div className="edit-places-main">
         <h2>IMPROVE PLACE</h2>

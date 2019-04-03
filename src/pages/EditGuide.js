@@ -73,7 +73,7 @@ class EditGuide extends Component {
     const button = <button onClick={this.showEditPlaces}>
       edit
     </button>
-    console.log(places)
+    
     return (
       <div className="edit-main-div">
         <h4>Add Image</h4>

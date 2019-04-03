@@ -31,7 +31,6 @@ class FileUpload extends Component {
   handleProgress = (progress) => this.setState({progress});
   handleUploadError = (error) => {
     this.setState({isUploading: false});
-    console.error(error);
   }
   handleUploadSuccess = (filename) => {
     this.setState({progress: 100, isUploading: false});

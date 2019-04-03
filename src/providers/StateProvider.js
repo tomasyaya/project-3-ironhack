@@ -56,7 +56,6 @@ export const withState = (Comp) => {
     this.setState({
       guides: [...guides].filter(guide => guide.location.toLowerCase().includes(search.toLowerCase()))
     })
-    console.log(guides)
   }
 
   sumLikes = (likesInPlace) => {

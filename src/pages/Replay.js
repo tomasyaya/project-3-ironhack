@@ -18,7 +18,6 @@ class Replay extends Component {
 
   getMessages = async () => {
     const { chatid } = this.props.match.params;
-    console.log('hellooooo')
     try {
       const  { messages }  = await chatService.getReplay(chatid)
       this.setState({

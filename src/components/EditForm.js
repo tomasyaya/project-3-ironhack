@@ -45,7 +45,6 @@ class EditForm extends Component {
 
   render() {
     const { name, location, what, description, isError, errorMessage } = this.state;
-    console.log(this.props.guide._id)
     return (
       <div>
         {isError ? <p className="error-message">{errorMessage}</p> : null}
