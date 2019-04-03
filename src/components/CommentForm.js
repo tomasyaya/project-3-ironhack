@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import guideService from '../service/guideService';
 
 class CommentForm extends Component {
 

@@ -3,7 +3,8 @@ import placeService from '../service/placeService';
 import PlaceReviews from '../components/PlaceReviews';
 import { emptyArray } from '../helpers/conditionals';
 import CommentForm from '../components/CommentForm';
-import PlaceComment from '../components/PlaceComment';
+import CommentCard from '../components/CommentCard';
+import Like from '../components/Like';
 
 class Place extends Component {
 
@@ -81,15 +82,18 @@ class Place extends Component {
   printComments = () => {
     const { comments } = this.state;
     return comments.map(comment => {
-      const { message, author, _id, creator } = comment
+      const { message, author, _id: commentId, creator } = comment;
+      const { id } = this.props.match.params;
       return (
-        <PlaceComment
-          message={message}
-          id={_id}
-          author={author}
-          key={_id}
-          getPlaces={this.getPlaces}
-          creator={creator}
+        <CommentCard 
+        deleteComment={placeService.deleteComment} 
+        mainId={id}
+        commentId={commentId}
+        name={author}
+        comment={message}
+        stateCallback={this.getPlaces}
+        creator={creator}
+        key={commentId}
         />
       )
     })
@@ -99,7 +103,6 @@ class Place extends Component {
     const { type, name, location, description, images } = this.state.place
     const { isLoaded, average, comments } = this.state;
     const { id } = this.props.match.params;
-    console.log(comments)
     return (
       <div className="place-detail-main">
         <h2>{name}</h2>
@@ -110,8 +113,11 @@ class Place extends Component {
           <PlaceReviews
             getPlace={this.getPlaces}
           />
+          <Like 
+            likes={placeService.likes}
+          />
           <div className="reviews-inner">
-            <h4>Average</h4>
+            <h4>Reviews Average</h4>
             <p>{average}</p>
           </div>
         </div>

@@ -56,6 +56,8 @@ body {
   outline: none;
 }
 
+
+
 /* ----------- SPLASH SCREEN ------ */
 
 .splash-screen-main {
@@ -825,6 +827,9 @@ body {
 
 .comments-form button {
   margin-bottom: 50px;
+  padding-top: 15px;
+  color: #FF8C00;
+  opacity: 0.8;
 }
 
 .comments-form input::placeholder {

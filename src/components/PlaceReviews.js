@@ -36,7 +36,7 @@ class PlaceReviews extends Component {
 
     return (
       <div>
-        <h3>Place Reviews</h3>
+        <h3>Leave Review</h3>
         <form onSubmit={this.handleSubmit}>
           <select name="review" onChange={this.handleChange}>
             <option value="1">1</option>

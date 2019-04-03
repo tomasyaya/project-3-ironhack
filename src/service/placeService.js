@@ -43,8 +43,13 @@ class PlaceService {
       .then(({data}) => data)
   }
 
-  deleteComment = (id) => {
-    return this.api.put(`/place/comment/remove/${id}`)
+  deleteComment = (_id, id) => {
+    return this.api.put(`/place/comment/${_id}/${id}`)
+      .then(({data}) => data)
+  }
+
+  likes = (id) => {
+    return this.api.put(`/place/like/${id}`)
       .then(({data}) => data)
   }
   

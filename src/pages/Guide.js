@@ -80,10 +80,11 @@ class Guide extends Component {
 
   displayComments = () => {
     const { comments, guide } = this.state;
+    const { _id } = guide;
     return comments.map(comment => (
         <CommentCard
           deleteComment={guideService.deleteComment} 
-          mainInfo={guide}
+          mainId={_id}
           commentId={comment._id}
           name={comment.name}
           comment={comment.comment}
