@@ -18,7 +18,8 @@ class Guide extends Component {
     isFavorite: false,
     places: [],
     likesArray: [],
-    likes: 0
+    likes: 0,
+    reviews: [0, 0, 0, 0, 0]
   }
 
   componentDidMount(){
@@ -121,16 +122,13 @@ class Guide extends Component {
     const { title, location, image } = this.state.guide;
     const { isLoaded, guide, isFavorite, comments, places, likes } = this.state;
     const { id } = this.props.match.params;
-   
+    console.log(this.state.places)
     return (
       <div className="guide-detail-main-container">
         <div className="guide-detail-main">
           <h1>Guide</h1>
           <h4>{title}</h4>
-          {!checkUndefined(image) ? 
-            <img src={image} alt="pic" /> 
-            : <p>{"No picture"}</p>  
-          }
+          {!checkUndefined(image) ?  <img src={image} alt="pic" />  : <p>{"No picture"}</p>  }
           {isLoaded ? <h4>total likes: {likes}</h4> : null}
           <p>
             Author: {isLoaded ? guide.creator.username : null}
@@ -150,9 +148,9 @@ class Guide extends Component {
               {isLoaded && !emptyArray(comments) ? this.displayComments() : null}
             </div>
             <CommentForm 
-            id={id}
-            getInfo={this.getGuide}
-            addComment={guideServices.addComment}
+              id={id}
+              getInfo={this.getGuide}
+              addComment={guideServices.addComment}
             />
           </div>
         </div>

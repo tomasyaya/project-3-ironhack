@@ -19,7 +19,6 @@ class CommentCard extends Component {
     const { _id: userId } = this.props.user
     const { creator, name, comment } = this.props;
     const button = <button onClick={this.handleClick}> X </button>
-    console.log(this.props)
     return (
       <div className="comment-card">
         <div>
