@@ -7,10 +7,10 @@ class CommentCard extends Component {
 
 
   handleClick = async () => {
-    const { commentId, guide: { _id }, getGuide } = this.props;
+    const { commentId, mainInfo: { _id }, stateCallback, deleteComment } = this.props;
     try {
-      await guideService.deleteComment(_id, commentId);
-      getGuide()
+      await deleteComment(_id, commentId);
+      stateCallback()
     } catch(error) {
       console.log(error)
     }

@@ -58,7 +58,7 @@ class GuideService {
       .then(({data}) => data)
   }
 
-  deleteComment(guide, id) {
+  deleteComment = (guide, id) => {
     return this.api.delete(`/api/comments/${guide}/${id}`)
       .then(({data}) => data)
   }

@@ -4,6 +4,7 @@ import { withAuth } from '../providers/AuthProvider';
 import { emptyArray } from '../helpers/conditionals'; 
 import CommentForm from '../components/CommentForm';
 import CommentCard from '../components/CommentCard';
+import guideService from '../service/guideService';
 import placeService from '../service/placeService';
 import { Link } from 'react-router-dom';
 
@@ -44,7 +45,9 @@ class Guide extends Component {
       const { images, location, name, type, description, _id } = place;
       return (
         <div className="place-container" key={_id}>
-          <img src={images[0].url}  alt="place-img" />
+          {!emptyArray(images) ? 
+            <img src={images[0].url}  alt="place-img" /> 
+          : null }
           <h4>{name}</h4>
           <p>{type}</p>
           <p>{location}</p>
@@ -78,12 +81,13 @@ class Guide extends Component {
   displayComments = () => {
     const { comments, guide } = this.state;
     return comments.map(comment => (
-        <CommentCard 
-          guide={guide}
+        <CommentCard
+          deleteComment={guideService.deleteComment} 
+          mainInfo={guide}
           commentId={comment._id}
           name={comment.name}
           comment={comment.comment}
-          getGuide={this.getGuide}
+          stateCallback={this.getGuide}
           creator={comment.creator}
           key={comment._id}
         />
