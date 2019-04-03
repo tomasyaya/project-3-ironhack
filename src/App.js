@@ -20,14 +20,13 @@ import Replay from './pages/Replay';
 import Place from './pages/Place';
 import Login from './pages/Login';
 import Guide from './pages/Guide';
+import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
 import User from './pages/User';
 import store from './store';
 import './App.css';
 
 library.add(faIgloo, faArrowLeft, faSignOutAlt, faSquare, faFolderPlus, faStopCircle, faHeart, faEnvelope)
-
-
 
 class App extends Component {
   
@@ -50,6 +49,7 @@ class App extends Component {
               <PrivateRoute path="/place/:id" component={Place} />
               <PrivateRoute path="/author/:id" component={User} />
               <PrivateRoute path="/favorites" component={Favorites} />
+              <PrivateRoute path="/error" component={ErrorPage} />
               <PrivateRoute path="/messages" component={Messages} />
               <PrivateRoute path="/:chatid/replay" component={Replay} />
               <PrivateRoute path="/" component={Home} />

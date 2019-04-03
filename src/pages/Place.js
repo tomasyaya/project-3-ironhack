@@ -30,6 +30,9 @@ class Place extends Component {
 
   componentDidMount() {
     this.getPlaces()
+    this.props.sendError('errrrooorrr')
+    
+    // this.props.history.push('/error')
     
   }
 
@@ -52,7 +55,7 @@ class Place extends Component {
         isLoaded: true
       })
     } catch(error) {
-      console.log(error)
+      this.props.history.push('/error')
     }
   }
 
@@ -113,7 +116,7 @@ class Place extends Component {
     const { type, name, location, description, images } = this.state.place
     const { isLoaded, average, comments, totalLikes, reviews } = this.state;
     const { id } = this.props.match.params;
-    
+    console.log(this.props)
     return (
       <div className="place-detail-main">
         <h2>{name}</h2>
