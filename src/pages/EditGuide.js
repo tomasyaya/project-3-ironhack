@@ -84,7 +84,7 @@ class EditGuide extends Component {
         {!checkIfEmpty(guide) ? <EditForm getGuide={this.getGuide} guide={guide}/> : null}
         <h4>Your Places</h4>
         {button}
-        {isLoaded && !emptyArray(places) ? this.showGuidePlaces()  : "Loading ..."}
+        {isLoaded && !emptyArray(places) ? this.showGuidePlaces()  : null}
       </div>
     );
   }

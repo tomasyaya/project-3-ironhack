@@ -108,7 +108,7 @@ class Place extends Component {
 
   render() {
     const { type, name, location, description, images } = this.state.place
-    const { isLoaded, average, comments, totalLikes } = this.state;
+    const { isLoaded, average, comments, totalLikes, reviews } = this.state;
     const { id } = this.props.match.params;
     
     return (
@@ -128,7 +128,7 @@ class Place extends Component {
           />
           <div className="reviews-inner">
             <h4>Reviews Average</h4>
-            <p>{average}</p>
+            {!emptyArray(reviews) ? <p>{average}</p> : <p>"No reviews yet"</p>}
           </div>
         </div>
         <h4>Pictures</h4>

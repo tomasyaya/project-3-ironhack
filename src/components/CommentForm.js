@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
+import { checkEmptyFields } from '../helpers/conditionals';
 
 class CommentForm extends Component {
 
   state = {
-    message: ''
+    message: '',
+    errMessage: "Please write something",
+    validation: false
   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
+      validation: false
     })
   }
 
@@ -19,6 +23,12 @@ class CommentForm extends Component {
     const { message } = this.state;
     const comment = {
       message
+    }
+    if(checkEmptyFields(message)){
+      this.setState({
+        validation: true
+      })
+      return
     }
     try {
      
@@ -33,10 +43,11 @@ class CommentForm extends Component {
   }
 
   render() {
-    const { message } = this.state;
+    const { message, validation, errMessage } = this.state;
     
     return (
       <div className="comments-form">
+      {validation ? <p className="error-messge">{errMessage}</p> : null}
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="message" placeholder="message" value={ message } onChange={this.handleChange}/>
           <button type="submit">Comment</button>

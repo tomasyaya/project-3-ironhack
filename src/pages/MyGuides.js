@@ -102,7 +102,7 @@ class MyGuides extends Component {
       <div className="my-guides-main">
           <h2>My Guides</h2>
           {showButton ? button : createForm}
-          {validation ? <p>{message}</p> : null}
+          {validation ? <p className="error-message">{message}</p> : null}
           {!checkIfEmpty(guides) ? this.printGuides(guides) : null}
       </div>
     )
