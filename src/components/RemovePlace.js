@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import placeService from '../service/placeService';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 
 class RemovePlace extends Component {
 
 
   handleClick = async () => {
-    const { getGuide, id } = this.props;
+    const { getGuide, id, sendError } = this.props;
+    const { push } = this.props.history;
+  
     try {
       await placeService.deletePlace(id);
       getGuide()
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
   render() {
@@ -26,4 +31,4 @@ class RemovePlace extends Component {
   }
 }
 
-export default RemovePlace;
+export default connect(null, { sendError })(RemovePlace);

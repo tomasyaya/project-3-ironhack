@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { checkEmptyFields } from '../helpers/conditionals';
 import placeService from '../service/placeService';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class EditForm extends Component {
 
@@ -23,7 +25,8 @@ class EditForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault()
     const { _id } = this.props.guide;
-    const { getGuide } = this.props;
+    const { getGuide, sendError } = this.props;
+    const { push } = this.props.history;
     const { name, location, what, description } = this.state
     if(checkEmptyFields(name, location, what, description)) {
       this.setState({ isError: true })
@@ -39,7 +42,8 @@ class EditForm extends Component {
         isError: false
       });
     } catch(error){
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -60,4 +64,4 @@ class EditForm extends Component {
   }
 }
 
-export default EditForm;
+export default connect(null, { sendError })(EditForm);

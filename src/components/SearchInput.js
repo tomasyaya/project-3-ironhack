@@ -47,7 +47,7 @@ class SearchInput extends Component {
       }
       this.showGuides(true, value);
       this.showButton();
-    }}/>
+      }}/>
     const button = <button onClick={() => {
       displayGuides(false);
       this.hideButton();

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { checkEmptyFields } from '../helpers/conditionals';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class CommentForm extends Component {
 
@@ -19,7 +21,8 @@ class CommentForm extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const { id, getInfo, addComment } = this.props;
+    const { id, getInfo, addComment, sendError } = this.props;
+    const { push } = this.props.history;
     const { message } = this.state;
     const comment = {
       message
@@ -38,7 +41,8 @@ class CommentForm extends Component {
         message: '',
       })
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -57,4 +61,4 @@ class CommentForm extends Component {
   }
 }
 
-export default CommentForm;
+export default connect(null, { sendError })(CommentForm);

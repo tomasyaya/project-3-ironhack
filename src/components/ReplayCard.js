@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 import { checkEqual } from '../helpers/conditionals';
 import { withAuth } from '../providers/AuthProvider';
 import  chatService from '../service/chatService'; 
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class ReplayCard extends Component {
 
 
   handleClick = async () => {
-    const { chatId, messageId, getMessages } = this.props;
+    const { chatId, messageId, getMessages, sendError } = this.props;
+    const { push } = this.props.history;
     try {
       await chatService.deleteReplay(chatId, messageId);
       getMessages()
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -33,4 +37,4 @@ class ReplayCard extends Component {
   }
 }
 
-export default withAuth(ReplayCard);
+export default connect(null, { sendError })(withAuth(ReplayCard));

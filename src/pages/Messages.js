@@ -3,6 +3,8 @@ import chatService from '../service/chatService';
 import { withAuth } from '../providers/AuthProvider';
 import { emptyArray } from '../helpers/conditionals';
 import MessageCard from '../components/MessageCard';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class Messages extends Component {
 
@@ -18,10 +20,11 @@ componentDidMount(){
 }
 
 
-
 getMessages = async () => {
   const creator = "creator";
-  const participant = "participant"
+  const participant = "participant";
+  const { push } = this.props.history;
+  const { sendError } = this.props;
   try {
     const sendTo = await chatService.getMessages(creator)
     const fromTo = await chatService.getMessages(participant)
@@ -32,11 +35,14 @@ getMessages = async () => {
       isLoaded: true,
     })
   } catch(error) {
-    console.log(error)
+    sendError(error)
+    push('/error')
   }
 }
 
 recieveFromMessages = async () => {
+  const { push } = this.props.history;
+  const { sendError } = this.props;
   try {
     const message = await chatService.participantMessages()
     this.setState({
@@ -44,7 +50,8 @@ recieveFromMessages = async () => {
       isLoaded: true
     })
   } catch(error) {
-    console.log(error)
+    sendError(error)
+    push('/error')
   }
 }
 
@@ -75,4 +82,4 @@ printMessages = () => {
   }
 }
 
-export default withAuth(Messages);
+export default connect(null, { sendError })(withAuth(Messages));

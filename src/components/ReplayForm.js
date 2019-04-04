@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import chatService from '../service/chatService';
 import { checkIfEmpty } from '../helpers/conditionals';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class ReplayForm extends Component {
 
@@ -20,8 +22,9 @@ class ReplayForm extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const { chatId, getMessages } = this.props;
+    const { chatId, getMessages, sendError } = this.props;
     const { message } = this.state;
+    const { push } = this.props.history;
     const newMessage = {
       message
     }
@@ -37,7 +40,8 @@ class ReplayForm extends Component {
       })
       getMessages()
     } catch(error){
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -55,4 +59,4 @@ class ReplayForm extends Component {
   }
 }
 
-export default ReplayForm;
+export default connect(null, { sendError })(ReplayForm);

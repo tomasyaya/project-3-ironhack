@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import placeService from '../service/placeService';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class PlaceReviews extends Component {
 
@@ -16,18 +18,20 @@ class PlaceReviews extends Component {
   }
 
   handleSubmit = async (event) => {
-    const { getPlace } = this.props
     event.preventDefault()
+    const { getPlace, sendError } = this.props
+    const { id } = this.props.match.params
+    const { push } = this.props.history;
     const { review } = this.state;
     const newReview = {
       review
     }
-    const { id } = this.props.match.params
     try {
       await placeService.addReview(id, newReview)
       getPlace(id)
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
   render() {
@@ -52,4 +56,4 @@ class PlaceReviews extends Component {
   }
 }
 
-export default withRouter(PlaceReviews);
+export default connect(null, { sendError })(withRouter(PlaceReviews));

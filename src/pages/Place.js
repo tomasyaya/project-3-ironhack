@@ -30,17 +30,15 @@ class Place extends Component {
 
   componentDidMount() {
     this.getPlaces()
-    this.props.sendError('errrrooorrr')
-    
-    // this.props.history.push('/error')
-    
   }
 
   getPlaces = async () => {
-    const { id } = this.props.match.params
+    const { id } = this.props.match.params;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const place = await placeService.getPlace(id)
-      const { reviews, comments, likes } = place
+      const { reviews, comments, likes } = place;
       const { likesArray } = this.state;
       this.setState({
         place,
@@ -55,7 +53,8 @@ class Place extends Component {
         isLoaded: true
       })
     } catch(error) {
-      this.props.history.push('/error')
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -116,7 +115,7 @@ class Place extends Component {
     const { type, name, location, description, images } = this.state.place
     const { isLoaded, average, comments, totalLikes, reviews } = this.state;
     const { id } = this.props.match.params;
-    console.log(this.props)
+    
     return (
       <div className="place-detail-main">
         <h2>{name}</h2>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import placeService from '../service/placeService';
 import FileUpload from '../components/FileUpload';
 import { emptyArray } from '../helpers/conditionals';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 
 class EditPlace extends Component {
@@ -17,6 +19,8 @@ class EditPlace extends Component {
 
   searchPlace = async () => {
     const { id } = this.props.match.params;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const  place = await placeService.getPlace(id)
       this.setState({
@@ -24,7 +28,8 @@ class EditPlace extends Component {
         isLoaded: true
       })
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -67,4 +72,4 @@ class EditPlace extends Component {
   }
 }
 
-export default EditPlace;
+export default connect(null, { sendError })(EditPlace);

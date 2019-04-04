@@ -5,6 +5,8 @@ import ChatForm from '../components/ChatForm';
 import { withAuth } from '../providers/AuthProvider';
 import DeleteChat from '../components/DeleteChat';
 import { checkEqual } from "../helpers/conditionals";
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class DisplayChat extends Component {
 
@@ -19,6 +21,8 @@ class DisplayChat extends Component {
 
   searchChats =  async () => {
     const { id } = this.props.match.params;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const chat = await chatService.getChat(id)
       const { messages } = chat[0]
@@ -27,16 +31,20 @@ class DisplayChat extends Component {
         isLoaded: true
       })
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
   handleClick = async (event, id, participant) => {
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       await chatService.deleteMessage(id, participant);
       this.searchChats();
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
   
@@ -44,6 +52,7 @@ class DisplayChat extends Component {
     const { messages } = this.state;
     const { id: participant } = this.props.match.params
     const { username } = this.props.user;
+    
     return messages.map(messages => {
       const { _id, message, author } = messages;
       
@@ -83,4 +92,4 @@ class DisplayChat extends Component {
   }
 }
 
-export default withAuth(withRouter(DisplayChat));
+export default  connect(null, { sendError })(withAuth(withRouter(DisplayChat)));

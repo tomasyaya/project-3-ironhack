@@ -5,21 +5,26 @@ import { sendError } from '../actions/errorActions';
 
 class ErrorPage extends Component {
 
+  
+  state = {
+    isLoaded: false
+  }
+
   componentDidMount() {
-    this.props.sendError('errorr22222')  
+     this.setState({
+       isLoaded: true
+     })
   }
   render() {
-    console.log(this.props.error.error)
+    const { error } = this.props.error;
+    const { isLoaded } = this.state;
+    const errorMessage = JSON.stringify(error)
     return (
-      <div>
+      <div className="error-page-main">
         <h1>ERROR</h1>
-        <h1>ERROR</h1>
-        <h1>ERROR</h1>
-        <h1>ERROR</h1>
-        <h1>ERROR</h1>
-        <h1>ERROR</h1>
-        <h1>ERROR</h1>
-        <h1>{this.props.error.error}</h1>
+        <div id="error-page-message">
+          <p id="error-p">{isLoaded ? errorMessage : null}</p>
+        </div>
       </div>
     );
   }

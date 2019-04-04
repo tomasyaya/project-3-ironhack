@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import guideService from '../service/guideService';
 import { emptyArray } from '../helpers/conditionals';
 import GuideCard from '../components/GuideCard';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class Favorites extends Component {
 
@@ -15,6 +17,8 @@ class Favorites extends Component {
   }
 
   getFavorites = async () => {
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const favorites = await guideService.getFavorites()
       this.setState({
@@ -22,7 +26,8 @@ class Favorites extends Component {
         isLoaded: true
       })
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -49,4 +54,4 @@ class Favorites extends Component {
   }
 }
 
-export default Favorites;
+export default connect(null, { sendError })(Favorites);

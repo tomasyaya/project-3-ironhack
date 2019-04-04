@@ -8,6 +8,8 @@ import guideService from '../service/guideService';
 import placeService from '../service/placeService';
 import PlaceCard from '../components/PlaceCard';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class Guide extends Component {
 
@@ -27,6 +29,8 @@ class Guide extends Component {
 
   getGuide = async () => {
     const { id } = this.props.match.params;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const guide = await guideServices.getGuide(id);
       const places = await placeService.getPlaces(id)
@@ -39,12 +43,13 @@ class Guide extends Component {
       })
       this.sumLikes(places)
     } catch(error){
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
   showPlaces = () => {
-    const { places } = this.state
+    const { places } = this.state;
     return places.map(place => {
       const { images, location, name, type, description, _id } = place;
       return (
@@ -75,14 +80,18 @@ class Guide extends Component {
 
   handleClick = async () => {
     const { id } = this.props.match.params;
-    const { isFavorite } = this.state
+    const { isFavorite } = this.state;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
+    
     try {
       await guideServices.toggleToFavorites(id);
       this.setState({
         isFavorite: !isFavorite
       })
     } catch(error){
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -161,4 +170,4 @@ class Guide extends Component {
   }
 }
 
-export default withAuth(Guide);
+export default connect(null, { sendError })(withAuth(Guide));
