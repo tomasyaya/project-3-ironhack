@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class FileUpload extends Component {
 
@@ -16,14 +18,16 @@ class FileUpload extends Component {
   uploadImage = async () => {
     const { avatarURL } = this.state;
     const { id } = this.props.match.params;
-    const { addImage } = this.props;
+    const { addImage, sendError } = this.props;
+    const { push } = this.props.history;
     const image = {
       image: avatarURL
     }
     try {
       await addImage(id, image)
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }  
 
@@ -68,4 +72,4 @@ class FileUpload extends Component {
   }
 }
 
-export default withRouter(FileUpload);
+export default connect(null, { sendError })(withRouter(FileUpload));

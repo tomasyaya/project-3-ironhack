@@ -6,7 +6,8 @@ import guideService from '../service/guideService';
 import DeleteButton from '../components/DeleteButton';
 import { Link } from 'react-router-dom';
 import OwnGuide from '../components/OwnGuide';
-
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class MyGuides extends Component {
 
@@ -24,13 +25,16 @@ class MyGuides extends Component {
   }
 
   getMyGuides = async () => {
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const guides = await guideService.myGuides();
       this.setState({
         guides: [...guides]
       });
     } catch(error){
-      console.log(error)
+      sendError(error)
+      push('/error')
     } 
   }
 
@@ -44,6 +48,8 @@ class MyGuides extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { title, location } = this.state;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     if(checkEmptyFields(title, location)) {
       this.setState({
         validation: true
@@ -63,7 +69,8 @@ class MyGuides extends Component {
       });
       await this.getMyGuides()
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -109,4 +116,4 @@ class MyGuides extends Component {
   }
 }
 
-export default  withState(withAuth(MyGuides));
+export default  connect(null, { sendError })(withState(withAuth(MyGuides)));

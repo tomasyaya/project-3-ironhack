@@ -4,6 +4,8 @@ import ReplayForm from '../components/ReplayForm';
 import chatService from '../service/chatService';
 import ReplayCard from '../components/ReplayCard';
 import { emptyArray } from '../helpers/conditionals';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class Replay extends Component {
 
@@ -18,6 +20,8 @@ class Replay extends Component {
 
   getMessages = async () => {
     const { chatid } = this.props.match.params;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const  { messages }  = await chatService.getReplay(chatid)
       this.setState({
@@ -25,7 +29,8 @@ class Replay extends Component {
         isLoaded: true
       })
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -50,7 +55,7 @@ class Replay extends Component {
   render() {
     const { chatid } = this.props.match.params;
     const { messages, isLoaded } = this.state;
-    console.log(this.props)
+    
     return (
       <div className="replay-main">
         <h1>Replay</h1>
@@ -66,4 +71,4 @@ class Replay extends Component {
   }
 }
 
-export default withAuth(Replay);
+export default connect(null, { sendError })(withAuth(Replay));

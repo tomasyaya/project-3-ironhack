@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import chatService from '../service/chatService';
 import { withRouter } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
-
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class ChatForm extends Component {
 
@@ -27,7 +28,8 @@ class ChatForm extends Component {
       this.setState({ error: true })
     }
     const { id } = this.props.match.params;
-    const { searchChat } = this.props
+    const { searchChat, sendError } = this.props
+    const { push } = this.props.history;
     const newMessage = {
       message
     }
@@ -39,7 +41,8 @@ class ChatForm extends Component {
       })
       searchChat();
     } catch(error){
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -58,4 +61,4 @@ class ChatForm extends Component {
   }
 }
 
-export default withRouter(withAuth(ChatForm));
+export default connect(null, { sendError })(withRouter(withAuth(ChatForm)));

@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
 import { checkEqual } from '../helpers/conditionals';
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
 
 class CommentCard extends Component {
 
 
   handleClick = async () => {
-    const { commentId, mainId, stateCallback, deleteComment } = this.props;
+    const { commentId, mainId, stateCallback, deleteComment, sendError } = this.props;
+    const { push } = this.props.history;
     try {
       await deleteComment(mainId, commentId);
       stateCallback()
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -19,6 +23,10 @@ class CommentCard extends Component {
     const { _id: userId } = this.props.user
     const { creator, name, comment } = this.props;
     const button = <button onClick={this.handleClick}> X </button>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> redux
     return (
       <div className="comment-card">
         <div>
@@ -31,4 +39,4 @@ class CommentCard extends Component {
   }
 }
 
-export default withAuth(CommentCard);
+export default connect(null, { sendError })(withAuth(CommentCard));

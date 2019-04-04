@@ -6,6 +6,9 @@ import CommentForm from '../components/CommentForm';
 import CommentCard from '../components/CommentCard';
 import Like from '../components/Like';
 
+import { connect } from 'react-redux';
+import { sendError } from '../actions/errorActions';
+
 class Place extends Component {
 
   state = {
@@ -27,14 +30,15 @@ class Place extends Component {
 
   componentDidMount() {
     this.getPlaces()
-    
   }
 
   getPlaces = async () => {
-    const { id } = this.props.match.params
+    const { id } = this.props.match.params;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const place = await placeService.getPlace(id)
-      const { reviews, comments, likes } = place
+      const { reviews, comments, likes } = place;
       const { likesArray } = this.state;
       this.setState({
         place,
@@ -49,7 +53,8 @@ class Place extends Component {
         isLoaded: true
       })
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
@@ -148,4 +153,4 @@ class Place extends Component {
   }
 }
 
-export default Place;
+export default connect(null, { sendError })(Place);

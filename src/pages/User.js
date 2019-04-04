@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
-import  chatService  from '../service/chatService';
-import DisplayChat from '../components/DisplayChat';
-import userService from '../service/userService';
 import { emptyArray } from '../helpers/conditionals';
+import DisplayChat from '../components/DisplayChat';
+import { sendError } from '../actions/errorActions';
+import  chatService  from '../service/chatService';
+import userService from '../service/userService';
+import { connect } from 'react-redux';
 
 class User extends Component {
 
@@ -20,16 +22,21 @@ class User extends Component {
 
   handleClick = async () => {
     const { id } = this.props.match.params;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       await chatService.createChat(id)
       this.checkForMessages()
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
   checkForMessages = async () => {
     const { id } = this.props.match.params;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const getChat = await chatService.getChat(id)
         if(!emptyArray(getChat)) {
@@ -38,12 +45,15 @@ class User extends Component {
           })
         }
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
 
   getUserName = async () => {
     const { id } = this.props.match.params;
+    const { push } = this.props.history;
+    const { sendError } = this.props;
     try {
       const { username } = await userService.getParticipant(id);
       this.setState({
@@ -51,7 +61,8 @@ class User extends Component {
         isLoaded: true
       })
     } catch(error) {
-      console.log(error)
+      sendError(error)
+      push('/error')
     }
   }
   
@@ -67,4 +78,4 @@ class User extends Component {
   }
 }
 
-export default withAuth(User);
+export default connect(null, { sendError })(withAuth(User));
