@@ -4,6 +4,7 @@ import { withAuth } from '../providers/AuthProvider';
 import  chatService from '../service/chatService'; 
 import { connect } from 'react-redux';
 import { sendError } from '../actions/errorActions';
+import { withRouter } from 'react-router-dom';
 
 class ReplayCard extends Component {
 
@@ -37,4 +38,4 @@ class ReplayCard extends Component {
   }
 }
 
-export default connect(null, { sendError })(withAuth(ReplayCard));
+export default connect(null, { sendError })(withAuth(withRouter(ReplayCard)));

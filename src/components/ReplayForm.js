@@ -3,6 +3,7 @@ import chatService from '../service/chatService';
 import { checkIfEmpty } from '../helpers/conditionals';
 import { connect } from 'react-redux';
 import { sendError } from '../actions/errorActions';
+import { withRouter } from 'react-router-dom';
 
 class ReplayForm extends Component {
 
@@ -59,4 +60,4 @@ class ReplayForm extends Component {
   }
 }
 
-export default connect(null, { sendError })(ReplayForm);
+export default connect(null, { sendError })(withRouter(ReplayForm));

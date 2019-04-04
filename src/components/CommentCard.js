@@ -3,6 +3,7 @@ import { withAuth } from '../providers/AuthProvider';
 import { checkEqual } from '../helpers/conditionals';
 import { connect } from 'react-redux';
 import { sendError } from '../actions/errorActions';
+import { withRouter } from 'react-router-dom';
 
 class CommentCard extends Component {
 
@@ -20,13 +21,10 @@ class CommentCard extends Component {
   }
 
   render() {
-    const { _id: userId } = this.props.user
+    const { _id: userId } = this.props.user;
     const { creator, name, comment } = this.props;
-    const button = <button onClick={this.handleClick}> X </button>
-<<<<<<< HEAD
-=======
+    const button = <button onClick={this.handleClick}> X </button>;
     
->>>>>>> redux
     return (
       <div className="comment-card">
         <div>
@@ -39,4 +37,4 @@ class CommentCard extends Component {
   }
 }
 
-export default connect(null, { sendError })(withAuth(CommentCard));
+export default connect(null, { sendError })(withAuth(withRouter(CommentCard)));

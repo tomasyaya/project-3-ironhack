@@ -3,6 +3,7 @@ import { checkEmptyFields } from '../helpers/conditionals';
 import placeService from '../service/placeService';
 import { connect } from 'react-redux';
 import { sendError } from '../actions/errorActions';
+import { withRouter } from 'react-router-dom';
 
 class EditForm extends Component {
 
@@ -64,4 +65,4 @@ class EditForm extends Component {
   }
 }
 
-export default connect(null, { sendError })(EditForm);
+export default connect(null, { sendError })(withRouter(EditForm));

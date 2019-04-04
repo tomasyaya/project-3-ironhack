@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { checkEmptyFields } from '../helpers/conditionals';
 import { connect } from 'react-redux';
 import { sendError } from '../actions/errorActions';
+import { withRouter } from 'react-router-dom';
 
 class CommentForm extends Component {
 
@@ -61,4 +62,4 @@ class CommentForm extends Component {
   }
 }
 
-export default connect(null, { sendError })(CommentForm);
+export default connect(null, { sendError })(withRouter(CommentForm));

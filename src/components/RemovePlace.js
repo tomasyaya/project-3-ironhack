@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import placeService from '../service/placeService';
 import { connect } from 'react-redux';
 import { sendError } from '../actions/errorActions';
+import { withRouter } from 'react-router-dom';
 
 
 class RemovePlace extends Component {
@@ -31,4 +32,4 @@ class RemovePlace extends Component {
   }
 }
 
-export default connect(null, { sendError })(RemovePlace);
+export default connect(null, { sendError })(withRouter(RemovePlace));
