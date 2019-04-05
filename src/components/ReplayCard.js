@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { checkEqual } from '../helpers/conditionals';
 import { withAuth } from '../providers/AuthProvider';
-import  chatService from '../service/chatService'; 
-import { connect } from 'react-redux';
 import { sendError } from '../actions/errorActions';
+import  chatService from '../service/chatService'; 
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class ReplayCard extends Component {
 

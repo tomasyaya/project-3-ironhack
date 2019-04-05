@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import chatService from '../service/chatService';
 import { withAuth } from '../providers/AuthProvider';
 import { emptyArray } from '../helpers/conditionals';
-import MessageCard from '../components/MessageCard';
-import { connect } from 'react-redux';
 import { sendError } from '../actions/errorActions';
+import MessageCard from '../components/MessageCard';
+import chatService from '../service/chatService';
+import { connect } from 'react-redux';
 
 class Messages extends Component {
 

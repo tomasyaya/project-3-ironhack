@@ -16,7 +16,7 @@ class PlaceCard extends Component {
           <h4>{name}</h4>
           <p>{type}</p>
           <p>{location}</p>
-          <p>{description}</p>
+          
           <Link to={`/place/${id}`}>More</Link>
       </div>
     );

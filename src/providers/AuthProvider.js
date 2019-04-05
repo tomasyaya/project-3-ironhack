@@ -31,7 +31,8 @@ export default class AuthProvider extends Component {
   state = {
     isLogged: false,
     user: {},
-    status: 'loading'
+    status: 'loading',
+    error: 'Username or password incorrect'
   }
 
   setUser = (user) => {
@@ -57,7 +58,12 @@ export default class AuthProvider extends Component {
       .then((user) => {
         this.setUser(user);
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        if(error.response.data.error){
+          return error.response.data
+        } 
+        console.log(error) 
+      })
   }
 
   signupUser = (body) => {

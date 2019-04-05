@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import chatService from '../service/chatService';
 import { checkIfEmpty } from '../helpers/conditionals';
-import { connect } from 'react-redux';
 import { sendError } from '../actions/errorActions';
+import chatService from '../service/chatService';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class ReplayForm extends Component {
 
@@ -53,7 +53,7 @@ class ReplayForm extends Component {
         {isEmpty ? <p className="error-message">{errMessage}</p> : null  }
         <form onSubmit={this.handleSubmit} className="replay-form">
           <input type="text" name="message"  placeholder="message" value={message} onChange={this.handleChange}/>
-          <button type="submit">Replay</button>
+          <button type="submit">Reply</button>
         </form>
       </div>
     );

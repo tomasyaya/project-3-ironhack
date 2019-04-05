@@ -140,6 +140,7 @@ class Place extends Component {
         <div className="place-image-container">
           {isLoaded && !emptyArray(images) ? this.printImages() : null}
         </div>
+        <h4>Comments</h4>
         <div className="comments-form-card">
           {isLoaded && !emptyArray(comments) ? this.printComments() : null}
           <CommentForm

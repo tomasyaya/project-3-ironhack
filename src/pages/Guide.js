@@ -131,7 +131,7 @@ class Guide extends Component {
     const { title, location, image } = this.state.guide;
     const { isLoaded, guide, isFavorite, comments, places, likes } = this.state;
     const { id } = this.props.match.params;
-    console.log(this.state.places)
+    
     return (
       <div className="guide-detail-main-container">
         <div className="guide-detail-main">

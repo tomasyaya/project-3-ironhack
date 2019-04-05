@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import guideService from '../service/guideService';
 import { emptyArray } from '../helpers/conditionals';
+import { sendError } from '../actions/errorActions';
+import guideService from '../service/guideService';
 import GuideCard from '../components/GuideCard';
 import { connect } from 'react-redux';
-import { sendError } from '../actions/errorActions';
 
 class Favorites extends Component {
 

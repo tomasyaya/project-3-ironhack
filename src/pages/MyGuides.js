@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { withAuth } from '../providers/AuthProvider';
-import { withState } from '../providers/StateProvider';
 import { checkIfEmpty, checkEmptyFields } from '../helpers/conditionals';
-import guideService from '../service/guideService';
+import { withState } from '../providers/StateProvider';
 import DeleteButton from '../components/DeleteButton';
-import { Link } from 'react-router-dom';
-import OwnGuide from '../components/OwnGuide';
-import { connect } from 'react-redux';
+import { withAuth } from '../providers/AuthProvider';
 import { sendError } from '../actions/errorActions';
+import guideService from '../service/guideService';
+import OwnGuide from '../components/OwnGuide';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class MyGuides extends Component {
 
@@ -84,11 +84,9 @@ class MyGuides extends Component {
     return arr.map(guide => {
       const { title, location, _id } = guide;
       return <div key={_id} className="own-guides-div">
+        <OwnGuide title={title} location={location} />
+        <Link to={`/user/guide/${_id}`}>Improve!</Link>
         <DeleteButton _id={_id} refreshGuides={this.getMyGuides} />
-        <div>
-          <OwnGuide title={title} location={location} />
-          <Link to={`/user/guide/${_id}`}>Improve!</Link>
-        </div>
       </div>
       
     })

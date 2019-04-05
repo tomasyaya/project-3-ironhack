@@ -20,7 +20,14 @@ class Login extends Component {
       })
     }
     this.props.login({ username, password })
-      .then(() => {})
+      .then(({ error, message}) => {
+        if (error) {
+          this.setState({
+            isError: true,
+            errorMessage:message
+          })
+        }
+      })
       .catch( error => console.log(error) )
   }
 

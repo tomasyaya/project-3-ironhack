@@ -351,6 +351,8 @@ body {
   height: 100vh;
   background: #303030;
   text-align: center;
+  overflow: auto;
+  padding-bottom: 100px;
 }
 
 .my-guides-main h2 {
@@ -396,14 +398,14 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   display: flex;
-  justify-content: center;
+  padding-left: 10px;
+  justify-content: space-evenly;
+  text-align: center;
 }
 
 .delete-btn button {
   color: #dfdfe5;
-  margin-bottom: 30px;
-  position: fixed;
-  left: 295px;
+  margin-left: 10px;
   font-size: 0.5em;
   opacity: 0.6;
 }
@@ -414,6 +416,7 @@ body {
   color: #FF8C00;
   opacity: 0.9;
   font-size: 0.8em;
+  padding-top: 10px;
 }
 
 .own-guides-div h4 {
@@ -688,15 +691,16 @@ body {
 }
 
 .place-container {
-  width: 120px;
   border-radius: 8px;
   background: rgba(42, 42, 42, 0.8);
   padding: 5px;
   margin:  5px 10px;
+  width: 50%;
+  height: 40%;
 }
 .place-container img {
-  width: 60%;
-  height: 40px;
+  width: 140px;
+  height: 100px;
 }
 
 .place-container a {
