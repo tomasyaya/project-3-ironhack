@@ -97,21 +97,25 @@ class MyGuides extends Component {
     const { location, title, showButton, guides, message, validation } = this.state;
     const button = <button onClick={this.showFrom}>New</button>
     const createForm = <form className="create-guide-form" onSubmit={this.handleSubmit}>
-                          <label htmlFor="title">Title</label>
-                          <input type="text" name="title" value={ title } onChange={this.handleChange}/>
-                          <label htmlFor="title">Location</label>
-                          <input type="text" name="location" value={ location } onChange={this.handleChange}/>
-                          <button type="submit">Create</button>
-                        </form>
+      <label htmlFor="title">Title</label>
+      <input type="text" name="title" value={ title } onChange={this.handleChange}/>
+      <label htmlFor="title">Location</label>
+      <input type="text" name="location" value={ location } onChange={this.handleChange}/>
+      <button type="submit">Create</button>
+    </form>
+
     return ( 
       <div className="my-guides-main">
-          <h2>My Guides</h2>
-          {showButton ? button : createForm}
-          {validation ? <p className="error-message">{message}</p> : null}
-          {!checkIfEmpty(guides) ? this.printGuides(guides) : null}
+        <h2>My Guides</h2>
+
+        {showButton ? button : createForm}
+        {validation ? <p className="error-message">{message}</p> : null}
+        {!checkIfEmpty(guides) ? this.printGuides(guides) : null}
       </div>
     )
   }
 }
 
-export default  connect(null, { sendError })(withState(withAuth(MyGuides)));
+export default connect(null, { sendError })(withState(withAuth(MyGuides)));
+
+

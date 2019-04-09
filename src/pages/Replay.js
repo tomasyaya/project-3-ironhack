@@ -58,7 +58,7 @@ class Replay extends Component {
     
     return (
       <div className="replay-main">
-        <h1>Replay</h1>
+        <h1>Reply</h1>
         <div className="replay-container">
           {isLoaded && !emptyArray(messages) ? this.printMessages() : null }
         </div>

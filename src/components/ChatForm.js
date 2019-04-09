@@ -22,17 +22,19 @@ class ChatForm extends Component {
   }
 
   handleSubmit = async (event) => {
-    event.preventDefault();
     const { message } = this.state;
+    const { searchChat, sendError, history: { push }, match: { params: { id }}} = this.props;
+    
+    event.preventDefault();
+    
     if(!message) {
       this.setState({ error: true })
     }
-    const { id } = this.props.match.params;
-    const { searchChat, sendError } = this.props
-    const { push } = this.props.history;
+    
     const newMessage = {
       message
     }
+    
     try {
       await chatService.addMessage(id, newMessage)
       this.setState({
@@ -47,11 +49,14 @@ class ChatForm extends Component {
   }
 
   render() {
-    const { message, error, errMessage } = this.state;
+    const { message, error: stateError , errMessage } = this.state;
+    
+    const error = stateError ? <p className="error-message">{errMessage}</p> : null
+
     return (
       <div className="chat-form">
         <h2>New Message</h2>
-        {error ? <p className="error-message">{errMessage}</p> : null }
+        { error }
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="message" placeholder="message" value={message} onChange={this.onChange}/>
           <button type="submit">Send</button>

@@ -19,7 +19,7 @@ class AuthService {
     return this.auth.post('/auth/login', {username, password})
       .then(({ data }) => data);
   }
-
+  // Concistencia en la destructuracion
   logout() {
     return this.auth.post('/auth/logout', {})
       .then(response => response.data)

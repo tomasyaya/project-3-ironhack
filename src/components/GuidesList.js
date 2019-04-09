@@ -11,18 +11,18 @@ class GuidesList extends Component {
     show: false
   }
 
-  renderGuides = (arr) => {
-    return arr.map((guide) => {
-      return <div key={guide._id}>
+  renderGuides = (arr) => (
+    arr.map((guide) => (
+      <div key={guide._id}>
         <GuideCard 
           title={guide.title}
           location={guide.location}
           id={guide._id}
         />
       </div>
-      
-    })
-  }
+    )  
+  ))
+  
 
   displayGuides = (state) => {
     this.setState({
@@ -34,7 +34,7 @@ class GuidesList extends Component {
     const { guides } = this.props;
     const { show } = this.state;
     return (
-      <div>
+      <div className="search-div">
         <SearchInput
           displayGuides={this.displayGuides}
         />
